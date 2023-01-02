@@ -3966,6 +3966,11 @@
     "isomorphic-unfetch" "^3.0.0"
     "js-cookie" "^2.2.1"
 
+"amplify@^0.0.11":
+  "integrity" "sha512-RkVzlUUUczGhjRWTX3QXEPzgPScdUXvmthgvcNpCQHfxshvxLPTdiLP6kLaUb/eo8IpnjLpKqUWxTIT97c8xew=="
+  "resolved" "https://registry.npmjs.org/amplify/-/amplify-0.0.11.tgz"
+  "version" "0.0.11"
+
 "anser@^1.4.9":
   "integrity" "sha512-hCv9AqTQ8ycjpSd3upOJd7vFwW1JaoYQ7tpham03GJ1ca8/65rqn0RpaWpItOAd6ylW9wAw6luXYPJIyPFVOww=="
   "resolved" "https://registry.npmjs.org/anser/-/anser-1.4.10.tgz"

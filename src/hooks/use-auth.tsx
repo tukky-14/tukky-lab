@@ -8,7 +8,7 @@ interface UseAuth {
     isLoading: boolean;
     isAuthenticated: boolean;
     username: string;
-    signUp: (username: string, password: string) => Promise<Result>;
+    signUp: (username: string, password: string, email: string) => Promise<Result>;
     confirmSignUp: (verificationCode: string) => Promise<Result>;
     signIn: (username: string, password: string) => Promise<Result>;
     signOut: () => void;
@@ -41,6 +41,7 @@ const useProvideAuth = (): UseAuth => {
     const [password, setPassword] = useState('');
 
     useEffect(() => {
+        console.log('AwsConfigAuth:', AwsConfigAuth);
         Auth.currentAuthenticatedUser()
             .then((result) => {
                 setUsername(result.username);
@@ -54,7 +55,7 @@ const useProvideAuth = (): UseAuth => {
             });
     }, []);
 
-    const signUp = async (username: string, password: string) => {
+    const signUp = async (username: string, password: string, email: string) => {
         try {
             await Auth.signUp({ username, password });
             setUsername(username);
