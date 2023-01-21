@@ -1,4 +1,5 @@
 import { Amplify, Auth } from 'aws-amplify';
+import { useRouter } from 'next/router';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import AwsConfigAuth from '../aws-config/auth';
 
@@ -35,6 +36,8 @@ export const useAuth = () => {
 };
 
 const useProvideAuth = (): UseAuth => {
+    const { push } = useRouter();
+
     const [isLoading, setIsLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [username, setUsername] = useState('');
@@ -57,11 +60,12 @@ const useProvideAuth = (): UseAuth => {
 
     const signUp = async (username: string, password: string, email: string) => {
         try {
-            await Auth.signUp({ username, password });
+            await Auth.signUp({ username, password, attributes: { email } });
             setUsername(username);
             setPassword(password);
             return { success: true, message: '' };
         } catch (error) {
+            alert(error);
             return {
                 success: false,
                 message: '認証に失敗しました。',
@@ -76,6 +80,7 @@ const useProvideAuth = (): UseAuth => {
             setPassword('');
             return result;
         } catch (error) {
+            alert(error);
             return {
                 success: false,
                 message: '認証に失敗しました。',
@@ -90,6 +95,7 @@ const useProvideAuth = (): UseAuth => {
             setIsAuthenticated(true);
             return { success: true, message: '' };
         } catch (error) {
+            alert(error);
             return {
                 success: false,
                 message: '認証に失敗しました。',
@@ -102,8 +108,10 @@ const useProvideAuth = (): UseAuth => {
             await Auth.signOut();
             setUsername('');
             setIsAuthenticated(false);
+            push('/');
             return { success: true, message: '' };
         } catch (error) {
+            alert(error);
             return {
                 success: false,
                 message: 'ログアウトに失敗しました。',

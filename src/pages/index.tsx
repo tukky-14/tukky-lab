@@ -1,4 +1,3 @@
-import { Inter } from '@next/font/google';
 import { useAuth } from '../hooks/use-auth';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
@@ -8,21 +7,19 @@ import Link from 'next/link';
 import CommonHead from '../components/CommonHead';
 import { useRouter } from 'next/router';
 
-const inter = Inter({ subsets: ['latin'] });
-
 export default function Home() {
-    const auth = useAuth();
-    const router = useRouter();
+    const { signIn } = useAuth();
+    const { push } = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const executeSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const result = await auth.signIn(username, password);
-        if (result.success) {
-            router.push('/main');
+        const { success, message } = await signIn(username, password);
+        if (success) {
+            push('/main');
         } else {
-            alert(result.message);
+            console.log(message);
         }
     };
 

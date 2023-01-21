@@ -9,7 +9,7 @@ import CommonHead from '../components/CommonHead';
 
 export default function Signup() {
     const { signUp } = useAuth();
-    const router = useRouter();
+    const { push } = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [passwordAgain, setPasswordAgain] = useState('');
@@ -28,11 +28,11 @@ export default function Signup() {
             return;
         }
 
-        const result = await signUp(username, password, email);
-        if (result.success) {
-            router.push('/');
+        const { success, message } = await signUp(username, password, email);
+        if (success) {
+            push({ pathname: '/signup-confirm', query: { email } }, 'signup-confirm');
         } else {
-            alert(result.message);
+            console.log(message);
         }
     };
 
