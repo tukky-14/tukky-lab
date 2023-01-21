@@ -1,12 +1,12 @@
-import { useAuth } from '../hooks/use-auth';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import Header from '../components/Header';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import Header from '../components/Header';
+import { useAuth } from '../hooks/use-auth';
 
-export default function Signup() {
+export default function SignupConfirm() {
     const { confirmSignUp } = useAuth();
     const { push, query } = useRouter();
     const [verificationCode, setVerificationCode] = useState('');

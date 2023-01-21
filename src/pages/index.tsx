@@ -1,10 +1,10 @@
-import { useAuth } from '../hooks/use-auth';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import React, { useState } from 'react';
-import Header from '../components/Header';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import Header from '../components/Header';
+import { useAuth } from '../hooks/use-auth';
 
 export default function Home() {
     const { signIn } = useAuth();
@@ -16,7 +16,7 @@ export default function Home() {
         event.preventDefault();
         const { success, message } = await signIn(username, password);
         if (success) {
-            push('/main');
+            push('/dashboard');
         } else {
             console.log(message);
         }

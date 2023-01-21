@@ -1,10 +1,10 @@
-import { useAuth } from '../hooks/use-auth';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
-import Header from '../components/Header';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import Header from '../components/Header';
+import { useAuth } from '../hooks/use-auth';
 
 export default function Signup() {
     const { signUp } = useAuth();
@@ -29,6 +29,7 @@ export default function Signup() {
 
         const { success, message } = await signUp(username, password, email);
         if (success) {
+            alert('入力されたメールアドレス宛に確認コードを送信しました。');
             push({ pathname: '/signup-confirm', query: { email } }, 'signup-confirm');
         } else {
             console.log(message);
