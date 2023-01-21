@@ -1,7 +1,6 @@
 import { useAuth } from '../hooks/use-auth';
 import React, { useState } from 'react';
 import Header from '../components/Header';
-import CommonHead from '../components/CommonHead';
 import Link from 'next/link';
 
 export default function Home() {
@@ -9,7 +8,6 @@ export default function Home() {
 
     return (
         <>
-            <CommonHead />
             <Header />
             <main>
                 <div className="max-w-xs m-auto pt-10 text-center">ログインしました！！</div>

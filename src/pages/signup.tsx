@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Header from '../components/Header';
 import Link from 'next/link';
-import CommonHead from '../components/CommonHead';
 
 export default function Signup() {
     const { signUp } = useAuth();
@@ -38,7 +37,6 @@ export default function Signup() {
 
     return (
         <>
-            <CommonHead />
             <Header />
             <main>
                 <div className="max-w-xs m-auto pt-10 mb-8">

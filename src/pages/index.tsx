@@ -4,7 +4,6 @@ import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Link from 'next/link';
-import CommonHead from '../components/CommonHead';
 import { useRouter } from 'next/router';
 
 export default function Home() {
@@ -25,7 +24,6 @@ export default function Home() {
 
     return (
         <>
-            <CommonHead />
             <Header />
             <main>
                 <div className="max-w-xs m-auto pt-10 mb-8">
