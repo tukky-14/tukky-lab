@@ -8,7 +8,7 @@ import { useAuth } from '../hooks/use-auth';
 
 export default function Home() {
     const { signIn } = useAuth();
-    const { push } = useRouter();
+    const router = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -16,7 +16,7 @@ export default function Home() {
         event.preventDefault();
         const { success, message } = await signIn(username, password);
         if (success) {
-            push('/dashboard');
+            router.push('/dashboard');
         } else {
             console.log(message);
         }

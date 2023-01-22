@@ -8,7 +8,7 @@ import { useAuth } from '../hooks/use-auth';
 
 export default function Signup() {
     const { signUp } = useAuth();
-    const { push } = useRouter();
+    const router = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [passwordAgain, setPasswordAgain] = useState('');
@@ -30,7 +30,7 @@ export default function Signup() {
         const { success, message } = await signUp(username, password, email);
         if (success) {
             alert('入力されたメールアドレス宛に確認コードを送信しました。');
-            push({ pathname: '/signup-confirm', query: { email } }, 'signup-confirm');
+            router.push({ pathname: '/signup-confirm', query: { email } }, 'signup-confirm');
         } else {
             console.log(message);
         }

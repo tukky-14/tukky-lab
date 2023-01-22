@@ -8,12 +8,12 @@ import { useAuth } from '../hooks/use-auth';
 
 export default function SignupConfirm() {
     const { confirmSignUp } = useAuth();
-    const { push, query } = useRouter();
+    const router = useRouter();
     const [verificationCode, setVerificationCode] = useState('');
 
     useEffect(() => {
-        if (!query?.email) {
-            push('/');
+        if (!router.query?.email) {
+            router.push('/');
         }
     }, []);
 
@@ -28,7 +28,7 @@ export default function SignupConfirm() {
         const result = await confirmSignUp(verificationCode);
         if (result.success) {
             alert('サインアップが完了しました。');
-            push('/');
+            router.push('/');
         } else {
             alert(result.message);
         }

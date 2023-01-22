@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
+import PrivateRoute from '../components/PrivateRoute';
 import { useAuth } from '../hooks/use-auth';
 
 export default function Dashboard() {
@@ -14,7 +15,7 @@ export default function Dashboard() {
     };
 
     return (
-        <>
+        <PrivateRoute>
             <Header />
             <main>
                 <div className="max-w-xs m-auto pt-10 text-center">ログインしました！！</div>
@@ -25,6 +26,6 @@ export default function Dashboard() {
                     ログアウト
                 </button>
             </main>
-        </>
+        </PrivateRoute>
     );
 }
