@@ -1,17 +1,14 @@
 import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import MainContents from '../components/MainContents';
 import PrivateRoute from '../components/PrivateRoute';
-import Sidebar from '../components/Sidebar';
 
 export default function Words() {
     return (
         <PrivateRoute>
             <Header />
-            <section className="w-full h-full flex flex-1">
-                <Sidebar />
-                <main className="bg-gray-50 flex-1"></main>
-            </section>
+            <MainContents title="ランダム名言"></MainContents>
             <Footer />
         </PrivateRoute>
     );
