@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Header from '../components/Header';
-import { useAuth } from '../hooks/use-auth';
+import { useAuth } from '../hooks/useAuth';
 
 export default function Home() {
     const { signIn } = useAuth();

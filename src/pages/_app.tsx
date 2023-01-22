@@ -1,7 +1,7 @@
-import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { ProvideAuth } from '.././hooks/use-auth';
 import Head from 'next/head';
+import { ProvideAuth } from '../hooks/useAuth';
+import '../styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
     return (

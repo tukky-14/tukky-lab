@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import PrivateRoute from '../components/PrivateRoute';
-import { useAuth } from '../hooks/use-auth';
+import { useAuth } from '../hooks/useAuth';
 
 export default function Dashboard() {
     const { signOut } = useAuth();
