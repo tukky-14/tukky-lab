@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { useAuth } from '../hooks/use-auth';
+import { useAuth } from '../hooks/useAuth';
+import Loading from './Loading';
 
 type Props = {
     children?: React.ReactNode;
@@ -16,7 +17,7 @@ const PrivateRoute: React.FC<Props> = ({ children }) => {
         }
     });
 
-    return isAuthenticated ? <>{children}</> : <></>;
+    return isAuthenticated ? <>{children}</> : <Loading />;
 };
 
 export default PrivateRoute;
