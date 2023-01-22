@@ -7,13 +7,16 @@ import AccountIcon from './HeaderMenu';
 
 export default function Header() {
     const { isAuthenticated } = useAuth();
-    const textPosition = isAuthenticated ? 'text-left' : 'text-center';
+    const titlePosition = isAuthenticated ? 'justify-left' : 'justify-center';
 
     return (
         <Box>
             <AppBar position="static">
                 <Toolbar>
-                    <div className={`w-full text-3xl ${textPosition}`}>Experiment Project</div>
+                    <div className={`w-full flex text-3xl ${titlePosition}`}>
+                        <img className="w-8 h-8" src="/icon.png" alt="フラスコの画像" />
+                        <p>Experiment Project</p>
+                    </div>
                     {isAuthenticated && <AccountIcon />}
                 </Toolbar>
             </AppBar>
