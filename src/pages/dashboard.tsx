@@ -10,7 +10,7 @@ export default function Dashboard() {
             <Header />
             <section className="w-full h-full flex flex-1">
                 <Sidebar />
-                <main className="bg-yellow-200 w-5/6"></main>
+                <main className="bg-yellow-200 flex-1"></main>
             </section>
             <Footer />
         </PrivateRoute>
