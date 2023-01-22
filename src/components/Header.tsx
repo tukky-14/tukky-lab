@@ -13,9 +13,9 @@ export default function Header() {
         <Box>
             <AppBar position="static">
                 <Toolbar>
-                    <div className={`w-full flex text-3xl ${titlePosition}`}>
+                    <div className={`w-full flex ${titlePosition}`}>
                         <img className="w-8 h-8" src="/icon.png" alt="フラスコの画像" />
-                        <p>Experiment Project</p>
+                        <p className="sm:text-3xl">Experiment Project</p>
                     </div>
                     {isAuthenticated && <AccountIcon />}
                 </Toolbar>

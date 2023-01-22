@@ -18,7 +18,7 @@ export default function Home() {
         event.preventDefault();
         const { success, message } = await signIn(username, password);
         if (success) {
-            router.push('/dashboard');
+            router.push('/home');
         } else {
             console.log(message);
         }

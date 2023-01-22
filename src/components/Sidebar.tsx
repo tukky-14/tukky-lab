@@ -1,5 +1,5 @@
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
+import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
@@ -11,35 +11,38 @@ const Sidebar = () => {
     const [openSidebar, setOpenSideber] = useState(true);
     const [sidebarSize, setSidebarSize] = useState('w-1/6');
 
-    const handleMenuiconClick = () => {
+    const handleMenuIconClick = () => {
         setOpenSideber(!openSidebar);
-        setSidebarSize(openSidebar ? 'w-1/6' : 'w-12');
+        setSidebarSize(!openSidebar ? 'w-1/6' : 'w-14');
     };
 
     return (
         <aside className={`${sidebarSize} bg-gray-200 flex flex-col`}>
-            <button className="py-2 pl-3 text-left hover:bg-white" onClick={handleMenuiconClick}>
+            <button
+                className="hidden sm:inline py-2 pl-4 text-left hover:bg-white"
+                onClick={handleMenuIconClick}
+            >
                 <MenuIcon />
             </button>
-            <Link href="/dashboard" className="py-2 pl-3 flex items-center hover:bg-white">
-                <DashboardIcon />
-                {!openSidebar && <span className="pl-2">ダッシュボード</span>}
+            <Link href="/home" className="py-2 pl-4 flex items-center hover:bg-white">
+                <HomeIcon />
+                {openSidebar && <span className="hidden sm:inline pl-3">ホーム</span>}
             </Link>
-            <Link href="/faceid" className="py-2 pl-3 flex items-center hover:bg-white">
+            <Link href="/emotion" className="py-2 pl-4 flex items-center hover:bg-white">
                 <SentimentSatisfiedAltIcon />
-                {!openSidebar && <span className="pl-2">顔認証</span>}
+                {openSidebar && <span className="hidden sm:inline pl-3">感情分析</span>}
             </Link>
-            <Link href="/faceid" className="py-2 pl-3 flex items-center hover:bg-white">
+            <Link href="/ocr" className="py-2 pl-4 flex items-center hover:bg-white">
                 <DocumentScannerIcon />
-                {!openSidebar && <span className="pl-2">OCR</span>}
+                {openSidebar && <span className="hidden sm:inline pl-3">OCR</span>}
             </Link>
-            <Link href="/faceid" className="py-2 pl-3 flex items-center hover:bg-white">
+            <Link href="/qr" className="py-2 pl-4 flex items-center hover:bg-white">
                 <QrCodeScannerIcon />
-                {!openSidebar && <span className="pl-2">QR</span>}
+                {openSidebar && <span className="hidden sm:inline pl-3">QR</span>}
             </Link>
-            <Link href="/faceid" className="py-2 pl-3 flex items-center hover:bg-white">
+            <Link href="/words" className="py-2 pl-4 flex items-center hover:bg-white">
                 <SpeakerNotesIcon />
-                {!openSidebar && <span className="pl-2">ランダム名言</span>}
+                {openSidebar && <span className="hidden sm:inline pl-3">ランダム名言</span>}
             </Link>
         </aside>
     );

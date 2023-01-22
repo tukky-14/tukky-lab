@@ -15,7 +15,7 @@ const PrivateRoute: React.FC<ReactChildren> = ({ children }) => {
         if (!isAuthenticated) {
             router.push('/');
         } else if (router.pathname === '/') {
-            router.push('/dashboard');
+            router.push('/home');
         }
     });
 
