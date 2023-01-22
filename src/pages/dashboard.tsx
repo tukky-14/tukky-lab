@@ -1,31 +1,18 @@
 import React from 'react';
 import Header from '../components/Header';
 import PrivateRoute from '../components/PrivateRoute';
-import { useAuth } from '../hooks/useAuth';
 
 export default function Dashboard() {
-    const { signOut } = useAuth();
-
-    const executeSignOut = () => {
-        const answer = confirm('本当にログアウトしますか？');
-        if (!answer) {
-            return;
-        }
-        signOut();
-    };
-
     return (
         <PrivateRoute>
             <Header />
-            <main>
-                <div className="max-w-xs m-auto pt-10 text-center">ログインしました！！</div>
-                <button
-                    className="block m-auto text-blue-600 hover:underline"
-                    onClick={executeSignOut}
-                >
-                    ログアウト
-                </button>
-            </main>
+            <section className="w-full h-full flex flex-1">
+                <aside className="bg-green-200 w-1/5 flex flex-col flex-1">サイドバー</aside>
+                <main className="bg-yellow-200 w-4/5">メイン</main>
+            </section>
+            <p className="bg-gray-200 w-full leading-6 absolute bottom-0 text-center text-sm">
+                &copy; 2023 tukky
+            </p>
         </PrivateRoute>
     );
 }

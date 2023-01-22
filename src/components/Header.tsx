@@ -1,32 +1,20 @@
-import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import * as React from 'react';
+import { useAuth } from '../hooks/useAuth';
+import AccountIcon from './HeaderMenu';
 
 export default function Header() {
-    const isAuthenticated = false;
+    const { isAuthenticated } = useAuth();
+    const textPosition = isAuthenticated ? 'text-left' : 'text-center';
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box>
             <AppBar position="static">
                 <Toolbar>
-                    {isAuthenticated && (
-                        <IconButton
-                            size="large"
-                            edge="start"
-                            color="inherit"
-                            aria-label="menu"
-                            sx={{ mr: 2 }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                    )}
-                    <div className="w-full text-center text-3xl">Experiment Project</div>
-                    {/* <Button color="inherit">Login</Button> */}
+                    <div className={`w-full text-3xl ${textPosition}`}>Experiment Project</div>
+                    {isAuthenticated && <AccountIcon />}
                 </Toolbar>
             </AppBar>
         </Box>

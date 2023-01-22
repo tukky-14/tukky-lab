@@ -44,7 +44,6 @@ const useProvideAuth = (): UseAuth => {
     const [password, setPassword] = useState('');
 
     useEffect(() => {
-        console.log('AwsConfigAuth:', AwsConfigAuth);
         Auth.currentAuthenticatedUser()
             .then((result) => {
                 setUsername(result.username);
@@ -60,12 +59,15 @@ const useProvideAuth = (): UseAuth => {
 
     const signUp = async (username: string, password: string, email: string) => {
         try {
+            setIsLoading(true);
             await Auth.signUp({ username, password, attributes: { email } });
             setUsername(username);
             setPassword(password);
+            setIsLoading(false);
             return { success: true, message: '' };
         } catch (error) {
             alert(error);
+            setIsLoading(false);
             return {
                 success: false,
                 message: '認証に失敗しました。',
@@ -75,11 +77,14 @@ const useProvideAuth = (): UseAuth => {
 
     const confirmSignUp = async (verificationCode: string) => {
         try {
+            setIsLoading(true);
             await Auth.confirmSignUp(username, verificationCode);
             const result = await signIn(username, password);
             setPassword('');
+            setIsLoading(false);
             return result;
         } catch (error) {
+            setIsLoading(false);
             alert(error);
             return {
                 success: false,
@@ -90,12 +95,15 @@ const useProvideAuth = (): UseAuth => {
 
     const signIn = async (username: string, password: string) => {
         try {
+            setIsLoading(true);
             const result = await Auth.signIn(username, password);
             setUsername(result.username);
             setIsAuthenticated(true);
+            setIsLoading(false);
             return { success: true, message: '' };
         } catch (error) {
             alert(error);
+            setIsLoading(false);
             return {
                 success: false,
                 message: '認証に失敗しました。',
@@ -105,13 +113,16 @@ const useProvideAuth = (): UseAuth => {
 
     const signOut = async () => {
         try {
+            setIsLoading(true);
             await Auth.signOut();
             setUsername('');
             setIsAuthenticated(false);
             push('/');
+            setIsLoading(false);
             return { success: true, message: '' };
         } catch (error) {
             alert(error);
+            setIsLoading(false);
             return {
                 success: false,
                 message: 'ログアウトに失敗しました。',

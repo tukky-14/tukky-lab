@@ -4,10 +4,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
+import Loading from '../components/Loading';
+import PrivateRoute from '../components/PrivateRoute';
 import { useAuth } from '../hooks/useAuth';
 
 export default function SignupConfirm() {
-    const { confirmSignUp } = useAuth();
+    const { isLoading, confirmSignUp } = useAuth();
     const router = useRouter();
     const [verificationCode, setVerificationCode] = useState('');
 
@@ -33,6 +35,10 @@ export default function SignupConfirm() {
             alert(result.message);
         }
     };
+
+    if (isLoading) {
+        <Loading />;
+    }
 
     return (
         <>

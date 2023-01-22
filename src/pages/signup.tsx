@@ -4,10 +4,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Header from '../components/Header';
+import Loading from '../components/Loading';
 import { useAuth } from '../hooks/useAuth';
 
 export default function Signup() {
-    const { signUp } = useAuth();
+    const { isLoading, signUp } = useAuth();
     const router = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -35,6 +36,10 @@ export default function Signup() {
             console.log(message);
         }
     };
+
+    if (isLoading) {
+        <Loading />;
+    }
 
     return (
         <>

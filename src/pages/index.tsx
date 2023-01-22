@@ -4,10 +4,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Header from '../components/Header';
+import Loading from '../components/Loading';
+import PrivateRoute from '../components/PrivateRoute';
 import { useAuth } from '../hooks/useAuth';
 
 export default function Home() {
-    const { signIn } = useAuth();
+    const { isLoading, signIn } = useAuth();
     const router = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -22,8 +24,12 @@ export default function Home() {
         }
     };
 
+    if (isLoading) {
+        <Loading />;
+    }
+
     return (
-        <>
+        <PrivateRoute>
             <Header />
             <main>
                 <div className="max-w-xs m-auto pt-10 mb-8">
@@ -53,12 +59,12 @@ export default function Home() {
                         </Button>
                     </form>
                 </div>
-                <Link href="./signup">
+                <Link href="signup">
                     <button className="block m-auto text-blue-600 hover:underline">
                         サインイン
                     </button>
                 </Link>
             </main>
-        </>
+        </PrivateRoute>
     );
 }
