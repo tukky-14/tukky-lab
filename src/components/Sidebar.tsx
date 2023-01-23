@@ -1,6 +1,7 @@
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
@@ -36,8 +37,8 @@ const Sidebar = () => {
                 <SentimentSatisfiedAltIcon />
                 {openSidebar && <span className="hidden sm:inline pl-3">感情分析</span>}
             </Link>
-            <Link href="/emotion" className="py-2 pl-4 flex items-center hover:bg-white">
-                <SentimentSatisfiedAltIcon />
+            <Link href="/articles" className="py-2 pl-4 flex items-center hover:bg-white">
+                <NewspaperIcon />
                 {openSidebar && <span className="hidden sm:inline pl-3">記事検索</span>}
             </Link>
             <Link href="/ocr" className="py-2 pl-4 flex items-center hover:bg-white">
