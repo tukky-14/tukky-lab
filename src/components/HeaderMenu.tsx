@@ -52,7 +52,6 @@ export default function AccountIcon() {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={handleClose}>プロフィール</MenuItem>
                 <MenuItem onClick={handleClose}>マイアカウント</MenuItem>
                 <MenuItem onClick={executeSignOut}>ログアウト</MenuItem>
             </Menu>

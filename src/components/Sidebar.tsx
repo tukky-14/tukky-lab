@@ -28,9 +28,17 @@ const Sidebar = () => {
                 <HomeIcon />
                 {openSidebar && <span className="hidden sm:inline pl-3">ホーム</span>}
             </Link>
+            <Link href="/quote" className="py-2 pl-4 flex items-center hover:bg-white">
+                <SpeakerNotesIcon />
+                {openSidebar && <span className="hidden sm:inline pl-3">ランダム名言</span>}
+            </Link>
             <Link href="/emotion" className="py-2 pl-4 flex items-center hover:bg-white">
                 <SentimentSatisfiedAltIcon />
                 {openSidebar && <span className="hidden sm:inline pl-3">感情分析</span>}
+            </Link>
+            <Link href="/emotion" className="py-2 pl-4 flex items-center hover:bg-white">
+                <SentimentSatisfiedAltIcon />
+                {openSidebar && <span className="hidden sm:inline pl-3">記事検索</span>}
             </Link>
             <Link href="/ocr" className="py-2 pl-4 flex items-center hover:bg-white">
                 <DocumentScannerIcon />
@@ -39,10 +47,6 @@ const Sidebar = () => {
             <Link href="/qr" className="py-2 pl-4 flex items-center hover:bg-white">
                 <QrCodeScannerIcon />
                 {openSidebar && <span className="hidden sm:inline pl-3">QR</span>}
-            </Link>
-            <Link href="/words" className="py-2 pl-4 flex items-center hover:bg-white">
-                <SpeakerNotesIcon />
-                {openSidebar && <span className="hidden sm:inline pl-3">ランダム名言</span>}
             </Link>
         </aside>
     );
