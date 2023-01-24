@@ -17,10 +17,10 @@ export default function Home() {
                             「表示」ボタンを押下すると、DynamoDBから取得した名言をランダムに表示します。
                         </p>
                     </Expand>
-                    <Expand title="感情分析">
+                    <Expand title="記事検索">
                         <p></p>
                     </Expand>
-                    <Expand title="記事検索">
+                    <Expand title="感情分析">
                         <p></p>
                     </Expand>
                     <Expand title="OCR">

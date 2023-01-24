@@ -54,10 +54,10 @@ export default function Quote() {
         <PrivateRoute>
             <Header />
             <MainContents title="ランダム名言">
-                <div className="w-2/3 my-4">
+                <div className="w-full sm:w-2/3 my-4 pr-4">
                     <Card variant="outlined">
-                        <div className="h-80 flex flex-col justify-center items-center">
-                            <p className="text-xl font-serif">{quote}</p>
+                        <div className="h-40 sm:h-80 flex flex-col justify-center items-center">
+                            <p className="p-2 sm:text-xl font-serif">{quote}</p>
                         </div>
                     </Card>
                 </div>

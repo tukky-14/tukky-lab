@@ -18,7 +18,7 @@ const Sidebar = () => {
     };
 
     return (
-        <aside className={`${sidebarSize} bg-gray-200 flex flex-col`}>
+        <aside className={`${sidebarSize} bg-blue-100 flex flex-col`}>
             <button
                 className="hidden sm:inline py-2 pl-4 text-left hover:bg-white"
                 onClick={handleMenuIconClick}
@@ -33,13 +33,13 @@ const Sidebar = () => {
                 <SpeakerNotesIcon />
                 {openSidebar && <span className="hidden sm:inline pl-3">ランダム名言</span>}
             </Link>
-            <Link href="/emotion" className="py-2 pl-4 flex items-center hover:bg-white">
-                <SentimentSatisfiedAltIcon />
-                {openSidebar && <span className="hidden sm:inline pl-3">感情分析</span>}
-            </Link>
             <Link href="/articles" className="py-2 pl-4 flex items-center hover:bg-white">
                 <NewspaperIcon />
                 {openSidebar && <span className="hidden sm:inline pl-3">記事検索</span>}
+            </Link>
+            <Link href="/emotion" className="py-2 pl-4 flex items-center hover:bg-white">
+                <SentimentSatisfiedAltIcon />
+                {openSidebar && <span className="hidden sm:inline pl-3">感情分析</span>}
             </Link>
             <Link href="/ocr" className="py-2 pl-4 flex items-center hover:bg-white">
                 <DocumentScannerIcon />
