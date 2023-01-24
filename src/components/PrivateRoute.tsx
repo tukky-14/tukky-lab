@@ -12,12 +12,14 @@ const PrivateRoute: React.FC<ReactChildren> = ({ children }) => {
     const router = useRouter();
 
     if (isLoading) {
-        return <Loading />;
+        return <Loading open={true} />;
     }
 
-    if (!isAuthenticated) {
+    if (!isAuthenticated && router.pathname !== '/') {
         router.push('/');
-    } else if (router.pathname === '/') {
+    }
+
+    if (isAuthenticated && router.pathname === '/') {
         router.push('/home');
     }
 

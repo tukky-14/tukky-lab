@@ -18,7 +18,9 @@ export default function Home() {
                         </p>
                     </Expand>
                     <Expand title="記事検索">
-                        <p></p>
+                        <p>
+                            項目を選んで「検索」を押下すると、対象のサイトをWebスクレイピングして情報を取得します。
+                        </p>
                     </Expand>
                     <Expand title="感情分析">
                         <p></p>

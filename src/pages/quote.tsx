@@ -1,21 +1,11 @@
-import { Button, Card, CardContent } from '@mui/material';
-import { Amplify, Auth, API } from 'aws-amplify';
+import { Button, Card } from '@mui/material';
+import { Auth } from 'aws-amplify';
 import React, { useEffect, useState } from 'react';
+import API from '../aws-config/api';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MainContents from '../components/MainContents';
 import PrivateRoute from '../components/PrivateRoute';
-
-Amplify.configure({
-    API: {
-        endpoints: [
-            {
-                name: 'dev',
-                endpoint: process.env.NEXT_PUBLIC_API_ENDPOINT_QUOTES,
-            },
-        ],
-    },
-});
 
 export default function Quote() {
     const [quote, setQuote] = useState('');
