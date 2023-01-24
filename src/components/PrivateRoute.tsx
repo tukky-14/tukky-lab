@@ -11,16 +11,14 @@ const PrivateRoute: React.FC<ReactChildren> = ({ children }) => {
     const { isLoading, isAuthenticated } = useAuth();
     const router = useRouter();
 
-    useEffect(() => {
-        if (!isAuthenticated) {
-            router.push('/');
-        } else if (router.pathname === '/') {
-            router.push('/home');
-        }
-    });
-
     if (isLoading) {
         return <Loading />;
+    }
+
+    if (!isAuthenticated) {
+        router.push('/');
+    } else if (router.pathname === '/') {
+        router.push('/home');
     }
 
     return <>{children}</>;
