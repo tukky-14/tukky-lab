@@ -1,122 +1,63 @@
-import { Button, MenuItem, Select } from '@mui/material';
-import {
-    DataGrid,
-    GridColDef,
-    GridRowsProp,
-    GridToolbarDensitySelector,
-    GridToolbarFilterButton,
-    jaJP,
-    GridToolbarContainer,
-    GridToolbarColumnsButton,
-    GridToolbarExport,
-    GridToolbarQuickFilter,
-} from '@mui/x-data-grid';
+import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { DataGrid, GridColDef, GridRowsProp, jaJP } from '@mui/x-data-grid';
 import { Auth } from 'aws-amplify';
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import API from '../../aws-config/api';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
+import { useAuth } from '../../hooks/useAuth';
+import CustomToolbar from './CustomToolbar';
+import QiitaColumns from './QiitaColumns';
+import ZennColumns from './ZennColumns';
 
-function CustomToolbar() {
-    return (
-        <GridToolbarContainer className="flex justify-between">
-            <div>
-                <GridToolbarColumnsButton />
-                <GridToolbarFilterButton />
-                <GridToolbarDensitySelector />
-                <GridToolbarExport />
-            </div>
-            <GridToolbarQuickFilter />
-        </GridToolbarContainer>
-    );
-}
+export const columnsReducer = (state: GridColDef[], action: string) => {
+    switch (action) {
+        case 'qiita':
+            return QiitaColumns;
+        case 'zenn':
+            return ZennColumns;
+        default:
+            return state;
+    }
+};
 
 export default function Articles() {
-    const [rows, setRows] = useState([] as GridRowsProp);
+    const { getAuthenticatedToken } = useAuth();
+
     const [isLoading, setIsLoading] = useState(false);
-    const columns: GridColDef[] = [
-        {
-            field: 'id',
-            headerName: 'No',
-            headerAlign: 'center',
-            align: 'center',
-            minWidth: 100,
-        },
-        {
-            field: 'title',
-            headerName: 'タイトル',
-            headerAlign: 'center',
-            align: 'left',
-            minWidth: 600,
-            flex: 1,
-            renderCell: (params) => (
-                <a
-                    className="text-blue-600 hover:underline"
-                    href={params.row.link}
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    {params.row.title}
-                </a>
-            ),
-        },
-        {
-            field: 'link',
-            headerName: 'リンク',
-            headerAlign: 'center',
-            align: 'left',
-            minWidth: 400,
-            renderCell: (params) => (
-                <a
-                    className="text-blue-600 hover:underline"
-                    href={params.row.link}
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    {params.row.link}
-                </a>
-            ),
-        },
-        {
-            field: 'tag',
-            headerName: 'タグ',
-            headerAlign: 'center',
-            align: 'left',
-            minWidth: 300,
-        },
-        {
-            field: 'like',
-            headerName: 'いいね',
-            headerAlign: 'center',
-            align: 'center',
-            minWidth: 100,
-        },
-        {
-            field: 'auther',
-            headerName: '著者',
-            headerAlign: 'center',
-            align: 'left',
-            minWidth: 100,
-        },
-    ];
+    const [selectSite, setSelectSite] = useState('qiita');
+    const [rows, setRows] = useState([] as GridRowsProp);
+    const [columns, columnsDispatch] = useReducer(columnsReducer, QiitaColumns);
+
+    const handleSelectSiteChange = (event: SelectChangeEvent<string>) => {
+        const selectSite = event.target.value;
+        setSelectSite(selectSite);
+        setRows([]);
+        columnsDispatch(selectSite);
+    };
 
     const handleSearchClick = async () => {
         try {
             setIsLoading(true);
-            const user = await Auth.currentAuthenticatedUser();
-            const token = user.signInUserSession.idToken.jwtToken;
 
+            const { token } = await getAuthenticatedToken();
             const getApiInit = {
                 headers: {
                     Authorization: token,
                 },
-                // queryStringParameters: {
-                // },
+                queryStringParameters: {
+                    site: selectSite,
+                },
             };
             const { body } = await API.get('dev', '/articles', getApiInit);
+            if (!Object.keys(body).length) {
+                alert('データは取得できませんでした');
+                setIsLoading(false);
+                return;
+            }
 
             setRows(body);
             setIsLoading(false);
@@ -135,10 +76,11 @@ export default function Articles() {
                     <Select
                         size="small"
                         sx={{ width: '100%', marginRight: '1rem', height: '2rem' }}
-                        defaultValue={10}
+                        defaultValue="qiita"
+                        onChange={handleSelectSiteChange}
                     >
-                        <MenuItem value={10}>Qiita週間トレンド記事</MenuItem>
-                        <MenuItem value={20}>Zenn</MenuItem>
+                        <MenuItem value="qiita">Qiita週間トレンド記事</MenuItem>
+                        <MenuItem value="zenn">Zenn</MenuItem>
                     </Select>
                     <Button
                         variant="contained"

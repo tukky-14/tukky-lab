@@ -9,6 +9,7 @@ interface UseAuth {
     isLoading: boolean;
     isAuthenticated: boolean;
     username: string;
+    getAuthenticatedToken: () => Promise<any>;
     signUp: (username: string, password: string, email: string) => Promise<Result>;
     confirmSignUp: (verificationCode: string) => Promise<Result>;
     signIn: (username: string, password: string) => Promise<Result>;
@@ -56,6 +57,12 @@ const useProvideAuth = (): UseAuth => {
                 setIsLoading(false);
             });
     }, []);
+
+    const getAuthenticatedToken = async () => {
+        const user = await Auth.currentAuthenticatedUser();
+        const token = user.signInUserSession.idToken.jwtToken;
+        return token;
+    };
 
     const signUp = async (username: string, password: string, email: string) => {
         try {
@@ -134,6 +141,7 @@ const useProvideAuth = (): UseAuth => {
         isLoading,
         isAuthenticated,
         username,
+        getAuthenticatedToken,
         signUp,
         confirmSignUp,
         signIn,
