@@ -13,24 +13,14 @@ export default function Home() {
                 このサイトは学習した内容をアウトプットする実験用として作成しています。
                 <div className="my-2 mr-4">
                     <Expand title="ランダム名言">
-                        <p>
-                            「表示」ボタンを押下すると、DynamoDBから取得した名言をランダムに表示します。
-                        </p>
+                        「表示」ボタンを押下すると、DynamoDBから取得した名言をランダムに表示します。
                     </Expand>
                     <Expand title="記事検索">
-                        <p>
-                            項目を選んで「検索」を押下すると、対象のサイトをWebスクレイピングして情報を取得します。
-                        </p>
+                        項目を選んで「検索」を押下すると、対象のサイトをWebスクレイピングして情報を取得します。
                     </Expand>
-                    <Expand title="感情分析">
-                        <p></p>
-                    </Expand>
-                    <Expand title="OCR">
-                        <p></p>
-                    </Expand>
-                    <Expand title="QR">
-                        <p></p>
-                    </Expand>
+                    <Expand title="感情分析"></Expand>
+                    <Expand title="OCR"></Expand>
+                    <Expand title="QR"></Expand>
                 </div>
             </MainContents>
             <Footer />

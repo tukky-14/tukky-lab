@@ -1,7 +1,17 @@
 import { Button, MenuItem, Select } from '@mui/material';
-import { DataGrid, GridColDef, GridRenderCellParams, GridRowsProp, jaJP } from '@mui/x-data-grid';
+import {
+    DataGrid,
+    GridColDef,
+    GridRowsProp,
+    GridToolbarDensitySelector,
+    GridToolbarFilterButton,
+    jaJP,
+    GridToolbarContainer,
+    GridToolbarColumnsButton,
+    GridToolbarExport,
+    GridToolbarQuickFilter,
+} from '@mui/x-data-grid';
 import { Auth } from 'aws-amplify';
-import axios from 'axios';
 import React, { useState } from 'react';
 import API from '../aws-config/api';
 import Footer from '../components/Footer';
@@ -10,14 +20,31 @@ import Loading from '../components/Loading';
 import MainContents from '../components/MainContents';
 import PrivateRoute from '../components/PrivateRoute';
 
-axios.defaults.baseURL = 'http://localhost:3000';
-axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+function CustomToolbar() {
+    return (
+        <GridToolbarContainer className="flex justify-between">
+            <div>
+                <GridToolbarColumnsButton />
+                <GridToolbarFilterButton />
+                <GridToolbarDensitySelector />
+                <GridToolbarExport />
+            </div>
+            <GridToolbarQuickFilter />
+        </GridToolbarContainer>
+    );
+}
 
 export default function Articles() {
     const [rows, setRows] = useState([] as GridRowsProp);
     const [isLoading, setIsLoading] = useState(false);
     const columns: GridColDef[] = [
+        {
+            field: 'id',
+            headerName: 'No',
+            headerAlign: 'center',
+            align: 'center',
+            minWidth: 100,
+        },
         {
             field: 'title',
             headerName: 'タイトル',
@@ -26,8 +53,30 @@ export default function Articles() {
             minWidth: 600,
             flex: 1,
             renderCell: (params) => (
-                <a className="text-blue-600 hover:underline" href={params.row.link} target="_blank">
+                <a
+                    className="text-blue-600 hover:underline"
+                    href={params.row.link}
+                    target="_blank"
+                    rel="noreferrer"
+                >
                     {params.row.title}
+                </a>
+            ),
+        },
+        {
+            field: 'link',
+            headerName: 'リンク',
+            headerAlign: 'center',
+            align: 'left',
+            minWidth: 400,
+            renderCell: (params) => (
+                <a
+                    className="text-blue-600 hover:underline"
+                    href={params.row.link}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    {params.row.link}
                 </a>
             ),
         },
@@ -35,7 +84,7 @@ export default function Articles() {
             field: 'tag',
             headerName: 'タグ',
             headerAlign: 'center',
-            align: 'center',
+            align: 'left',
             minWidth: 300,
         },
         {
@@ -43,6 +92,13 @@ export default function Articles() {
             headerName: 'いいね',
             headerAlign: 'center',
             align: 'center',
+            minWidth: 100,
+        },
+        {
+            field: 'auther',
+            headerName: '著者',
+            headerAlign: 'center',
+            align: 'left',
             minWidth: 100,
         },
     ];
@@ -61,7 +117,7 @@ export default function Articles() {
                 // },
             };
             const { body } = await API.get('dev', '/articles', getApiInit);
-            console.log(body);
+
             setRows(body);
             setIsLoading(false);
         } catch (error) {
@@ -69,10 +125,6 @@ export default function Articles() {
             console.log(error);
         }
     };
-
-    // if (isLoading) {
-    //     return <Loading />;
-    // }
 
     return (
         <PrivateRoute>
@@ -106,19 +158,19 @@ export default function Articles() {
                 >
                     <DataGrid
                         rows={rows}
-                        checkboxSelection
                         columns={columns}
                         rowsPerPageOptions={[10, 25, 50, 100]}
                         localeText={jaJP.components.MuiDataGrid.defaultProps.localeText}
                         initialState={{
                             columns: {
                                 columnVisibilityModel: {
-                                    USE_STATUS: false,
+                                    link: false,
+                                    auther: false,
                                 },
                             },
-                            sorting: {
-                                sortModel: [{ field: 'LICENSE_PLATE', sort: 'asc' }],
-                            },
+                        }}
+                        components={{
+                            Toolbar: CustomToolbar,
                         }}
                     />
                 </div>

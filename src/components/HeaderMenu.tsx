@@ -27,7 +27,7 @@ export default function AccountIcon() {
     };
 
     if (isLoading) {
-        <Loading />;
+        <Loading open={isLoading} />;
     }
 
     return (
