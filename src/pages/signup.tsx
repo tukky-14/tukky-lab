@@ -38,7 +38,7 @@ export default function Signup() {
     };
 
     if (isLoading) {
-        <Loading />;
+        <Loading open={isLoading} />;
     }
 
     return (

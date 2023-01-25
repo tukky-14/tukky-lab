@@ -13,12 +13,12 @@ import {
 } from '@mui/x-data-grid';
 import { Auth } from 'aws-amplify';
 import React, { useState } from 'react';
-import API from '../aws-config/api';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import Loading from '../components/Loading';
-import MainContents from '../components/MainContents';
-import PrivateRoute from '../components/PrivateRoute';
+import API from '../../aws-config/api';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
+import Loading from '../../components/Loading';
+import MainContents from '../../components/MainContents';
+import PrivateRoute from '../../components/PrivateRoute';
 
 function CustomToolbar() {
     return (

@@ -37,7 +37,7 @@ export default function SignupConfirm() {
     };
 
     if (isLoading) {
-        <Loading />;
+        <Loading open={isLoading} />;
     }
 
     return (

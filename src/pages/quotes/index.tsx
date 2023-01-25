@@ -1,13 +1,13 @@
 import { Button, Card } from '@mui/material';
 import { Auth } from 'aws-amplify';
 import React, { useEffect, useState } from 'react';
-import API from '../aws-config/api';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import MainContents from '../components/MainContents';
-import PrivateRoute from '../components/PrivateRoute';
+import API from '../../aws-config/api';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
+import MainContents from '../../components/MainContents';
+import PrivateRoute from '../../components/PrivateRoute';
 
-export default function Quote() {
+export default function Quotes() {
     const [quote, setQuote] = useState('');
     const [quoteList, setQuoteList] = useState([]);
 

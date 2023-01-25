@@ -29,7 +29,7 @@ const Sidebar = () => {
                 <HomeIcon />
                 {openSidebar && <span className="hidden sm:inline pl-3">ホーム</span>}
             </Link>
-            <Link href="/quote" className="py-2 pl-4 flex items-center hover:bg-white">
+            <Link href="/quotes" className="py-2 pl-4 flex items-center hover:bg-white">
                 <SpeakerNotesIcon />
                 {openSidebar && <span className="hidden sm:inline pl-3">ランダム名言</span>}
             </Link>

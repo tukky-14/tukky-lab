@@ -25,7 +25,7 @@ export default function Home() {
     };
 
     if (isLoading) {
-        <Loading />;
+        <Loading open={isLoading} />;
     }
 
     return (

@@ -1,9 +1,9 @@
 import React from 'react';
-import Expand from '../components/Expand';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import MainContents from '../components/MainContents';
-import PrivateRoute from '../components/PrivateRoute';
+import Expand from '../../components/Expand';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
+import MainContents from '../../components/MainContents';
+import PrivateRoute from '../../components/PrivateRoute';
 
 export default function Home() {
     return (
