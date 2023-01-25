@@ -19,7 +19,7 @@ export default function Header() {
                             src="/icon.png"
                             alt="フラスコの画像"
                         />
-                        <p className="sm:text-3xl">Experiment Project</p>
+                        <p className="sm:text-3xl">Tukky Lab</p>
                     </div>
                     {isAuthenticated && <AccountIcon />}
                 </Toolbar>
