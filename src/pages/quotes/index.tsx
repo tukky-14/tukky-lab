@@ -1,41 +1,30 @@
 import { Button, Card } from '@mui/material';
-import { Auth } from 'aws-amplify';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import API from '../../aws-config/api';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
 
-export default function Quotes() {
-    const [quote, setQuote] = useState('');
-    const [quoteList, setQuoteList] = useState([]);
+export const getStaticProps = async () => {
+    const getApiInit = {
+        headers: {},
+    };
+    const res = await API.get('dev', '/quotes', getApiInit);
+    const quotes = res.map((data: any) => data.quote);
+    return {
+        props: {
+            quotes,
+        },
+    };
+};
 
-    useEffect(() => {
-        getQuotes();
-    }, []);
+export default function Quotes({ quotes }: any) {
+    const [quote, setQuote] = useState('');
 
     const handleButtonClick = () => {
-        const randamIndex = Math.floor(Math.random() * quoteList.length);
-        setQuote(quoteList[randamIndex]);
-    };
-
-    const getQuotes = async () => {
-        try {
-            const user = await Auth.currentAuthenticatedUser();
-            const token = user.signInUserSession.idToken.jwtToken;
-
-            const getApiInit = {
-                headers: {
-                    Authorization: token,
-                },
-            };
-            const res = await API.get('dev', '/quotes', getApiInit);
-            const quotes = res.map((data: any) => data.quote);
-            setQuoteList(quotes);
-        } catch (err) {
-            console.log(err);
-        }
+        const randamIndex = Math.floor(Math.random() * quotes.length);
+        setQuote(quotes[randamIndex]);
     };
 
     return (
