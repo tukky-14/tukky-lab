@@ -12,7 +12,7 @@ export default function Quotes() {
     const [quoteList, setQuoteList] = useState([]);
 
     useEffect(() => {
-        executeGetRollcall();
+        getQuotes();
     }, []);
 
     const handleButtonClick = () => {
@@ -20,7 +20,7 @@ export default function Quotes() {
         setQuote(quoteList[randamIndex]);
     };
 
-    const executeGetRollcall = async () => {
+    const getQuotes = async () => {
         try {
             const user = await Auth.currentAuthenticatedUser();
             const token = user.signInUserSession.idToken.jwtToken;
@@ -29,8 +29,6 @@ export default function Quotes() {
                 headers: {
                     Authorization: token,
                 },
-                // queryStringParameters: {
-                // },
             };
             const res = await API.get('dev', '/quotes', getApiInit);
             const quotes = res.map((data: any) => data.quote);
