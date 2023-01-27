@@ -46,11 +46,9 @@ export default function Emotion() {
 
             const result = await getEmotions(imageSrc);
             console.log('result:', result);
-            const newEmotion = emotions.map(
-                (emotion: { type: string; confidence: string }, index: number) => {
-                    return { ...emotion, confidence: `${result[index].Confidence.toFixed(2)}%` };
-                }
-            );
+            const newEmotion = emotions.map((emotion: { type: string; confidence: string }, index: number) => {
+                return { ...emotion, confidence: `${result[index].Confidence.toFixed(2)}%` };
+            });
             console.log('newEmotion:', newEmotion);
             setEmotions(newEmotion);
 

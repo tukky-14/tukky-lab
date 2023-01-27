@@ -17,12 +17,7 @@ const ZennColumns: GridColDef[] = [
         minWidth: 600,
         flex: 1,
         renderCell: (params) => (
-            <a
-                className="text-blue-600 hover:underline"
-                href={params.row.link}
-                target="_blank"
-                rel="noreferrer"
-            >
+            <a className="text-blue-600 hover:underline" href={params.row.link} target="_blank" rel="noreferrer">
                 {params.row.title}
             </a>
         ),
@@ -34,12 +29,7 @@ const ZennColumns: GridColDef[] = [
         align: 'left',
         minWidth: 400,
         renderCell: (params) => (
-            <a
-                className="text-blue-600 hover:underline"
-                href={params.row.link}
-                target="_blank"
-                rel="noreferrer"
-            >
+            <a className="text-blue-600 hover:underline" href={params.row.link} target="_blank" rel="noreferrer">
                 {params.row.link}
             </a>
         ),

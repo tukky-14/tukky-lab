@@ -1,6 +1,6 @@
-import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { DataGrid, GridColDef, GridRowsProp, jaJP } from '@mui/x-data-grid';
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import API from '../../aws-config/api';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -24,26 +24,22 @@ export const columnsReducer = (state: GridColDef[], action: string) => {
 
 export default function Articles() {
     const [isLoading, setIsLoading] = useState(false);
+    const [selectSite, setSelectSite] = useState('qiita');
     const [rows, setRows] = useState([] as GridRowsProp);
     const [columns, columnsDispatch] = useReducer(columnsReducer, QiitaColumns);
 
-    useEffect(() => {
-        handleSelectSiteChange();
-    }, []);
-
-    const handleSelectSiteChange = async (event?: SelectChangeEvent<string>) => {
-        const site = event?.target.value || 'qiita';
-        const result = await searchArticles(site);
-        setRows(result);
-        columnsDispatch(site);
+    const handleSelectSiteChange = (event: SelectChangeEvent<string>) => {
+        const selectSite = event.target.value;
+        setSelectSite(selectSite);
+        setRows([]);
+        columnsDispatch(selectSite);
     };
 
-    const searchArticles = async (selectSite: string) => {
+    const handleSearchClick = async () => {
         try {
             setIsLoading(true);
 
             const getApiInit = {
-                headers: {},
                 queryStringParameters: {
                     site: selectSite,
                 },
@@ -55,8 +51,8 @@ export default function Articles() {
                 return;
             }
 
+            setRows(body);
             setIsLoading(false);
-            return body;
         } catch (error) {
             setIsLoading(false);
             console.log(error);
@@ -68,7 +64,7 @@ export default function Articles() {
             <Loading open={isLoading} />
             <Header />
             <MainContents title="記事検索">
-                <div className="w-4/5 sm:w-1/3 py-2">
+                <div className="flex flex-col sm:flex-row w-1/2 sm:w-1/3 pt-2 sm:items-center">
                     <Select
                         size="small"
                         sx={{ width: '100%', marginRight: '1rem', height: '2rem' }}
@@ -78,6 +74,9 @@ export default function Articles() {
                         <MenuItem value="qiita">Qiita週間トレンド記事</MenuItem>
                         <MenuItem value="zenn">Zenn</MenuItem>
                     </Select>
+                    <Button variant="contained" sx={{ margin: '1rem 0', height: '2rem' }} onClick={handleSearchClick}>
+                        検索
+                    </Button>
                 </div>
                 <div
                     style={{
