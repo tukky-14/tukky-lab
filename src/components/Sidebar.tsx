@@ -2,7 +2,6 @@ import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
-import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 import Link from 'next/link';
@@ -19,10 +18,7 @@ const Sidebar = () => {
 
     return (
         <aside className={`${sidebarSize} bg-blue-100 flex flex-col`}>
-            <button
-                className="hidden sm:inline py-2 pl-4 text-left hover:bg-white"
-                onClick={handleMenuIconClick}
-            >
+            <button className="hidden sm:inline py-2 pl-4 text-left hover:bg-white" onClick={handleMenuIconClick}>
                 <MenuIcon />
             </button>
             <Link href="/home" className="py-2 pl-4 flex items-center hover:bg-white">

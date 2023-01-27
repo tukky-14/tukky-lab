@@ -19,10 +19,9 @@ export default function Home() {
                         項目を選んで「検索」を押下すると、対象のサイトをWebスクレイピングしてグリッドに展開します。
                     </Expand>
                     <Expand title="感情分析">
-                        人の顔が写っている画像を選択して「分析」ボタンを押下すると、AWS Rekognitonを使用して感情を分析します。
+                        人の顔が写っている画像を選択して「分析」ボタンを押下すると、AWS Rekognitionを使用して感情を分析します。
                     </Expand>
                     <Expand title="OCR"></Expand>
-                    <Expand title="QR"></Expand>
                 </div>
             </MainContents>
             <Footer />
