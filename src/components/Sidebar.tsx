@@ -45,10 +45,6 @@ const Sidebar = () => {
                 <DocumentScannerIcon />
                 {openSidebar && <span className="hidden sm:inline pl-3">OCR</span>}
             </Link>
-            <Link href="/qr" className="py-2 pl-4 flex items-center hover:bg-white">
-                <QrCodeScannerIcon />
-                {openSidebar && <span className="hidden sm:inline pl-3">QR</span>}
-            </Link>
         </aside>
     );
 };
