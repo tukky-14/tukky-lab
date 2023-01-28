@@ -1,12 +1,12 @@
 import { Box, Button } from '@mui/material';
 import React, { useState } from 'react';
+import API from '../../aws-config/api';
+import Emotions from '../../components/Emotions';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
-import Emotions from './Emotions';
-import getEmotions from './getEmotions';
 
 export default function Emotion() {
     const [isLoading, setIsLoading] = useState(false);
@@ -44,13 +44,23 @@ export default function Emotion() {
             }
             setIsLoading(true);
 
-            const result = await getEmotions(imageSrc);
-            console.log('result:', result);
-            const newEmotion = emotions.map((emotion: { type: string; confidence: string }, index: number) => {
-                return { ...emotion, confidence: `${result[index].Confidence.toFixed(2)}%` };
+            const putApiInit = {
+                headers: {},
+                body: {
+                    imageSrc,
+                },
+            };
+            const { body } = await API.put('dev', '/emotion', putApiInit);
+            if (!Object.keys(body).length) {
+                alert('データは取得できませんでした');
+                return;
+            }
+
+            const results = body.FaceDetails[0].Emotions;
+            const newEmotions = emotions.map((emotion: { type: string; confidence: string }, index: number) => {
+                return { ...emotion, confidence: `${results[index].Confidence.toFixed(2)}%` };
             });
-            console.log('newEmotion:', newEmotion);
-            setEmotions(newEmotion);
+            setEmotions(newEmotions);
 
             setIsLoading(false);
         } catch (error) {
