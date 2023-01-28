@@ -1,7 +1,7 @@
 import { GridColDef } from '@mui/x-data-grid';
 import React from 'react';
 
-const ZennColumns: GridColDef[] = [
+export const ZennColumns: GridColDef[] = [
     {
         field: 'id',
         headerName: 'No',
@@ -56,5 +56,3 @@ const ZennColumns: GridColDef[] = [
         minWidth: 100,
     },
 ];
-
-export default ZennColumns;

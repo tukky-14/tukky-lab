@@ -8,8 +8,8 @@ import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
 import CustomToolbar from './CustomToolbar';
-import QiitaColumns from './QiitaColumns';
-import ZennColumns from './ZennColumns';
+import { QiitaColumns } from './QiitaColumns';
+import { ZennColumns } from './ZennColumns';
 
 export const columnsReducer = (state: GridColDef[], action: string) => {
     switch (action) {

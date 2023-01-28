@@ -1,7 +1,7 @@
 import { GridColDef } from '@mui/x-data-grid';
 import React from 'react';
 
-const QiitaColumns: GridColDef[] = [
+export const QiitaColumns: GridColDef[] = [
     {
         field: 'id',
         headerName: 'No',
@@ -56,5 +56,3 @@ const QiitaColumns: GridColDef[] = [
         minWidth: 100,
     },
 ];
-
-export default QiitaColumns;
