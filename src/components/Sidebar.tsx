@@ -1,11 +1,7 @@
-import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
-import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
-import NewspaperIcon from '@mui/icons-material/Newspaper';
-import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
-import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { SidebarData } from './SidebarData';
 
 const Sidebar = () => {
     const [openSidebar, setOpenSideber] = useState(true);
@@ -21,26 +17,12 @@ const Sidebar = () => {
             <button className="hidden sm:inline py-2 pl-4 text-left hover:bg-white" onClick={handleMenuIconClick}>
                 <MenuIcon />
             </button>
-            <Link href="/home" className="py-2 pl-4 flex items-center hover:bg-white">
-                <HomeIcon />
-                {openSidebar && <span className="hidden sm:inline pl-3">ホーム</span>}
-            </Link>
-            <Link href="/quotes" className="py-2 pl-4 flex items-center hover:bg-white">
-                <SpeakerNotesIcon />
-                {openSidebar && <span className="hidden sm:inline pl-3">ランダム名言</span>}
-            </Link>
-            <Link href="/articles" className="py-2 pl-4 flex items-center hover:bg-white">
-                <NewspaperIcon />
-                {openSidebar && <span className="hidden sm:inline pl-3">記事検索</span>}
-            </Link>
-            <Link href="/emotion" className="py-2 pl-4 flex items-center hover:bg-white">
-                <SentimentSatisfiedAltIcon />
-                {openSidebar && <span className="hidden sm:inline pl-3">感情分析</span>}
-            </Link>
-            <Link href="/ocr" className="py-2 pl-4 flex items-center hover:bg-white">
-                <DocumentScannerIcon />
-                {openSidebar && <span className="hidden sm:inline pl-3">OCR</span>}
-            </Link>
+            {SidebarData.map((data: { title: string; icon: any; link: string }) => (
+                <Link href={data.link} className="py-2 pl-4 flex items-center hover:bg-white">
+                    {data.icon}
+                    {openSidebar && <span className="hidden sm:inline pl-3">{data.title}</span>}
+                </Link>
+            ))}
         </aside>
     );
 };
