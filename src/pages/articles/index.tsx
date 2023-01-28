@@ -2,14 +2,19 @@ import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { DataGrid, GridColDef, GridRowsProp, jaJP } from '@mui/x-data-grid';
 import React, { useReducer, useState } from 'react';
 import API from '../../aws-config/api';
+import { QiitaColumns } from '../../components/ColumnsQiita';
+import { ZennColumns } from '../../components/ColumnsZenn';
+import CustomToolbar from '../../components/CustomToolbar';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
-import CustomToolbar from './CustomToolbar';
-import { QiitaColumns } from './QiitaColumns';
-import { ZennColumns } from './ZennColumns';
+
+const sites = [
+    { value: 'qiita', title: 'Qiita週間トレンド記事' },
+    { value: 'zenn', title: 'Zenn週間トレンド記事' },
+];
 
 export const columnsReducer = (state: GridColDef[], action: string) => {
     switch (action) {
@@ -71,8 +76,11 @@ export default function Articles() {
                         defaultValue="qiita"
                         onChange={handleSelectSiteChange}
                     >
-                        <MenuItem value="qiita">Qiita週間トレンド記事</MenuItem>
-                        <MenuItem value="zenn">Zenn</MenuItem>
+                        {sites.map((site: { value: string; title: string }, index: number) => (
+                            <MenuItem value={site.value} key={index}>
+                                {site.title}
+                            </MenuItem>
+                        ))}
                     </Select>
                     <Button variant="contained" sx={{ margin: '1rem 0', height: '2rem' }} onClick={handleSearchClick}>
                         検索
