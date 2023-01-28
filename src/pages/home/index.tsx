@@ -20,6 +20,16 @@ export default function Home() {
                     </Expand>
                     <Expand title="感情分析">
                         人の顔が写っている画像を選択して「分析」ボタンを押下すると、AWS Rekognitionを使用して感情を分析します。
+                        テスト画像は存在しない人物の画像を生成する
+                        <a
+                            className="text-blue-600 hover:underline"
+                            href="https://thispersondoesnotexist.com/"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            こちら
+                        </a>
+                        のサイトから。
                     </Expand>
                     <Expand title="OCR"></Expand>
                 </div>
