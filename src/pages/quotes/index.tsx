@@ -42,10 +42,12 @@ export default function Quotes({ quotes }: any) {
                             <p className="absolute bottom-5 right-5 text-sm">{character}</p>
                         </div>
                     </Card>
+                    <div className="w-full mt-4 flex justify-center">
+                        <Button className="w-full sm:w-1/3" variant="contained" onClick={handleButtonClick}>
+                            表示
+                        </Button>
+                    </div>
                 </div>
-                <Button variant="contained" onClick={handleButtonClick}>
-                    表示
-                </Button>
             </MainContents>
             <Footer />
         </PrivateRoute>

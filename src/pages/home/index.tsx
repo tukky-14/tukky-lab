@@ -40,7 +40,13 @@ export default function Home() {
                         </a>
                         のサイトを使用できます。
                     </Expand>
-                    <Expand title="OCR"></Expand>
+                    <Expand title="OCR">
+                        OCRは、Optical Character
+                        Reader（またはRecognition）の略で、画像データのテキストを文字データに変換する光学文字認識機能のことです。
+                        <br />
+                        カメラで文字の写真を写して「分析」ボタンを押下すると、AWS
+                        Rekognitionを使用してテキストを検出します。日本語は検出できません。。
+                    </Expand>
                 </div>
             </MainContents>
             <Footer />

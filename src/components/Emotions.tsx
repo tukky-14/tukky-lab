@@ -8,7 +8,7 @@ const Emotions = (props: Props) => {
     const { emotions } = props;
     return (
         <div className="w-full sm:w-1/4 mb-2 rounded">
-            <p className="mb-1 text-center">【分析結果】</p>
+            <h3 className="mb-1 text-center">【分析結果】</h3>
             {emotions.map((row: any, index: number) => (
                 <div className="w-full flex" key={index}>
                     <p className="w-1/2 border border-solid	 bg-gray-100">{row.type}</p>

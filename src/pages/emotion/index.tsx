@@ -51,8 +51,9 @@ export default function Emotion() {
                 },
             };
             const { body } = await API.put('dev', '/emotion', putApiInit);
-            if (!Object.keys(body).length) {
-                alert('データは取得できませんでした');
+            if (!Object.keys(body.FaceDetails).length) {
+                alert('顔の検出に失敗しました。');
+                setIsLoading(false);
                 return;
             }
 
@@ -87,9 +88,11 @@ export default function Emotion() {
                             accept="image/*"
                             onChange={handleFileSelectClick}
                         />
-                        <Button variant="contained" onClick={handleAnalysisClick}>
-                            分析
-                        </Button>
+                        <div className="w-full mt-4 flex justify-center">
+                            <Button className="w-full sm:w-2/3" variant="contained" onClick={handleAnalysisClick}>
+                                分析
+                            </Button>
+                        </div>
                     </div>
                     <Emotions emotions={emotions} />
                 </div>
