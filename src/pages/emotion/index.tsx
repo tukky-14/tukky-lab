@@ -13,14 +13,14 @@ export default function Emotion() {
     const [imageData, setImageData] = useState('');
     const [imageSrc, setImageSrc] = useState('');
     const [emotions, setEmotions] = useState([
-        { type: '穏やか', confidence: '0%' },
-        { type: '混乱', confidence: '0%' },
-        { type: '驚き', confidence: '0%' },
-        { type: '恐れ', confidence: '0%' },
-        { type: '悲しみ', confidence: '0%' },
-        { type: '怒り', confidence: '0%' },
-        { type: '幸せ', confidence: '0%' },
-        { type: 'うんざり', confidence: '0%' },
+        { type: '', confidence: '0%' },
+        { type: '', confidence: '0%' },
+        { type: '', confidence: '0%' },
+        { type: '', confidence: '0%' },
+        { type: '', confidence: '0%' },
+        { type: '', confidence: '0%' },
+        { type: '', confidence: '0%' },
+        { type: '', confidence: '0%' },
     ]);
 
     const handleFileSelectClick = (event: any) => {
@@ -59,7 +59,26 @@ export default function Emotion() {
 
             const results = body.FaceDetails[0].Emotions;
             const newEmotions = emotions.map((emotion: { type: string; confidence: string }, index: number) => {
-                return { ...emotion, confidence: `${results[index].Confidence.toFixed(2)}%` };
+                switch (results[index].Type) {
+                    case 'CALM':
+                        return { type: '穏やか', confidence: `${results[index].Confidence.toFixed(2)}%` };
+                    case 'CONFUSED':
+                        return { type: '混乱', confidence: `${results[index].Confidence.toFixed(2)}%` };
+                    case 'SURPRISED':
+                        return { type: '驚き', confidence: `${results[index].Confidence.toFixed(2)}%` };
+                    case 'FEAR':
+                        return { type: '恐れ', confidence: `${results[index].Confidence.toFixed(2)}%` };
+                    case 'SAD':
+                        return { type: '悲しみ', confidence: `${results[index].Confidence.toFixed(2)}%` };
+                    case 'DISGUSTED':
+                        return { type: 'うんざり', confidence: `${results[index].Confidence.toFixed(2)}%` };
+                    case 'ANGRY':
+                        return { type: '怒り', confidence: `${results[index].Confidence.toFixed(2)}%` };
+                    case 'HAPPY':
+                        return { type: '幸せ', confidence: `${results[index].Confidence.toFixed(2)}%` };
+                    default:
+                        return { type: '穏やか', confidence: `${results[index].Confidence.toFixed(2)}%` };
+                }
             });
             setEmotions(newEmotions);
 
@@ -77,9 +96,8 @@ export default function Emotion() {
             <MainContents title="感情分析">
                 <div className="sm:flex mt-2 mr-2 -ml-2 sm:ml-0">
                     <div className="mb-2">
-                        <Box sx={{ width: 300, height: 300, border: 'thin solid black' }}>
-                            {imageData && <img className="m-auto" src={imageData} />}
-                        </Box>
+                        {!imageData && <Box sx={{ width: 300, height: 300, border: 'thin solid black' }}></Box>}
+                        {imageData && <img className="m-auto" src={imageData} />}
                         <input
                             id="fileUpload"
                             className="block w-full my-2"
