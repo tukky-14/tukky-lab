@@ -11,7 +11,9 @@ export const getStaticProps = async () => {
         headers: {},
     };
     const res = await API.get('dev', '/quotes', getApiInit);
-    const quotes = res.map((data: any) => data.quote);
+    const quotes = res.map((data: any) => {
+        return { quote: data.quote, character: data.character };
+    });
     return {
         props: {
             quotes,
@@ -21,10 +23,12 @@ export const getStaticProps = async () => {
 
 export default function Quotes({ quotes }: any) {
     const [quote, setQuote] = useState('');
+    const [character, setCharacter] = useState();
 
     const handleButtonClick = () => {
         const randamIndex = Math.floor(Math.random() * quotes.length);
-        setQuote(quotes[randamIndex]);
+        setQuote(quotes[randamIndex].quote);
+        setCharacter(quotes[randamIndex].character);
     };
 
     return (
@@ -33,8 +37,9 @@ export default function Quotes({ quotes }: any) {
             <MainContents title="ランダム名言">
                 <div className="w-full sm:w-2/3 my-4 pr-4">
                     <Card variant="outlined">
-                        <div className="h-40 sm:h-80 flex flex-col justify-center items-center">
-                            <p className="p-2 sm:text-xl font-serif">{quote}</p>
+                        <div className="h-40 sm:h-80 flex flex-col justify-center items-center relative font-serif">
+                            <p className="p-2 sm:text-xl">{quote}</p>
+                            <p className="absolute bottom-5 right-5 text-sm">{character}</p>
                         </div>
                     </Card>
                 </div>

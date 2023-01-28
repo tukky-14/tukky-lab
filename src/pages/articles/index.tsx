@@ -69,7 +69,7 @@ export default function Articles() {
             <Loading open={isLoading} />
             <Header />
             <MainContents title="記事検索">
-                <div className="flex flex-col sm:flex-row w-1/2 sm:w-1/3 pt-2 sm:items-center">
+                <div className="flex flex-col sm:flex-row w-4/5 sm:w-1/3 pt-2 sm:items-center">
                     <Select
                         size="small"
                         sx={{ width: '100%', marginRight: '1rem', height: '2rem' }}

@@ -13,7 +13,16 @@ export default function Home() {
                 このサイトは学習した内容をアウトプットする実験用として作成しています。
                 <div className="my-2 mr-4">
                     <Expand title="ランダム名言">
-                        「表示」ボタンを押下すると、DynamoDBから取得した名言をランダムに表示します。
+                        「表示」ボタンを押下すると、DynamoDBから取得したジョジョの名言をランダムに表示します。 名言は
+                        <a
+                            className="text-blue-600 hover:underline"
+                            href="https://news.mynavi.jp/article/20220512-2339271/"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            こちら
+                        </a>
+                        のサイトからいただきました。
                     </Expand>
                     <Expand title="記事検索">
                         項目を選んで「検索」を押下すると、対象のサイトをWebスクレイピングしてグリッドに展開します。
@@ -29,7 +38,7 @@ export default function Home() {
                         >
                             こちら
                         </a>
-                        のサイトから。
+                        のサイトを使用できます。
                     </Expand>
                     <Expand title="OCR"></Expand>
                 </div>
