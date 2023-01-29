@@ -9,7 +9,7 @@ Amplify.configure({
             },
             {
                 name: 'anime',
-                endpoint: 'http://api.moemoe.tokyo/anime/v1',
+                endpoint: 'https://api.moemoe.tokyo/anime/v1',
             },
         ],
     },
