@@ -7,6 +7,10 @@ Amplify.configure({
                 name: 'dev',
                 endpoint: process.env.NEXT_PUBLIC_API_ENDPOINT_TUKKYLAB,
             },
+            {
+                name: 'anime',
+                endpoint: 'http://api.moemoe.tokyo/anime/v1',
+            },
         ],
     },
 });

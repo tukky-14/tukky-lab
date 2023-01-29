@@ -1,5 +1,6 @@
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import HomeIcon from '@mui/icons-material/Home';
+import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
@@ -14,6 +15,11 @@ export const SidebarData = [
         title: 'ランダム名言',
         icon: <SpeakerNotesIcon />,
         link: '/quotes',
+    },
+    {
+        title: 'アニメ情報',
+        icon: <LocalMoviesIcon />,
+        link: '/anime',
     },
     {
         title: '記事検索',

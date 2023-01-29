@@ -24,6 +24,18 @@ export default function Home() {
                         </a>
                         のサイトからいただきました。
                     </Expand>
+                    <Expand title="アニメ情報">
+                        放送中のアニメのリストを取得してグリッドに展開します。
+                        <a
+                            className="text-blue-600 hover:underline"
+                            href="https://github.com/Project-ShangriLa/sora-playframework-scala"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Shangrila Anime API
+                        </a>
+                        を使用させていただきました。
+                    </Expand>
                     <Expand title="記事検索">
                         項目を選んで「検索」を押下すると、対象のサイトをWebスクレイピングしてグリッドに展開します。
                     </Expand>
@@ -38,7 +50,7 @@ export default function Home() {
                         >
                             こちら
                         </a>
-                        のサイトを使用できます。
+                        のサイトを使ったりすると楽しいです。
                     </Expand>
                     <Expand title="OCR">
                         OCRは、Optical Character
