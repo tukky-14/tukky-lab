@@ -14,15 +14,3 @@
     -   パス　：tukkylab
 
 <br>
-
-## ローカルでの起動
-
--   前提条件：PC 端末に nodejs のインストール
-
-```bash
-git clone https://github.com/tukky-14/tukky-lab.git
-
-npm run dev
-# or
-yarn dev
-```
