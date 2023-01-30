@@ -25,7 +25,7 @@ export default function Home() {
                         のサイトからいただきました。
                     </Expand>
                     <Expand title="アニメ情報">
-                        放送中のアニメのリストを取得してグリッドに展開します。
+                        季節別のアニメのリストを取得してグリッドに展開します。
                         <a
                             className="text-blue-600 hover:underline"
                             href="https://github.com/Project-ShangriLa/sora-playframework-scala"

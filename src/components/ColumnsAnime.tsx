@@ -15,7 +15,7 @@ export const AnimeColumns: GridColDef[] = [
         headerAlign: 'center',
         align: 'left',
         minWidth: 600,
-        // flex: 1,
+        flex: 1,
         renderCell: (params) => (
             <a className="text-blue-600 hover:underline" href={params.row.public_url} target="_blank" rel="noreferrer">
                 {params.row.title}
@@ -36,5 +36,22 @@ export const AnimeColumns: GridColDef[] = [
         headerAlign: 'center',
         align: 'left',
         minWidth: 200,
+    },
+    {
+        field: 'twitter_account',
+        headerName: 'Twitterアカウント',
+        headerAlign: 'center',
+        align: 'left',
+        minWidth: 150,
+        renderCell: (params) => (
+            <a
+                className="text-blue-600 hover:underline"
+                href={`https://twitter.com/${params.row.twitter_account}`}
+                target="_blank"
+                rel="noreferrer"
+            >
+                {params.row.twitter_account}
+            </a>
+        ),
     },
 ];
