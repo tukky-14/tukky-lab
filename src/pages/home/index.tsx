@@ -24,6 +24,18 @@ export default function Home() {
                         </a>
                         のサイトからいただきました。
                     </Expand>
+                    <Expand title="MCU次回作">
+                        次に公開されるMCU映画を表示します。
+                        <a
+                            className="text-blue-600 hover:underline"
+                            href="https://github.com/DiljotSG/MCU-Countdown/blob/develop/docs/API.md"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            MCU-Countdown
+                        </a>
+                        を使用させていただきました。
+                    </Expand>
                     <Expand title="アニメ情報">
                         季節別のアニメのリストを取得してグリッドに展開します。
                         <a
