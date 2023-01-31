@@ -1,6 +1,5 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
-import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { sidebarOpenState } from '../globalStates/sidebarAtom';
 import { SidebarData } from './SidebarData';

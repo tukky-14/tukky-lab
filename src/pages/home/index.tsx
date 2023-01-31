@@ -71,6 +71,13 @@ export default function Home() {
                         カメラで文字の写真を写して「分析」ボタンを押下すると、AWS
                         Rekognitionを使用してテキストを検出します。日本語は検出できません。。
                     </Expand>
+                    <Expand title="HTTP猫">
+                        HTTPステータスを猫の画像で取得できる
+                        <a className="text-blue-600 hover:underline" href="https://http.cat/" target="_blank" rel="noreferrer">
+                            こちら
+                        </a>
+                        を使用させていただきました。かわいい。
+                    </Expand>
                 </div>
             </MainContents>
             <Footer />
