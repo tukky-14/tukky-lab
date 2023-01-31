@@ -9,6 +9,7 @@ import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
+import { API_ENDPOINT } from '../../constants/api';
 
 const seasons = [
     { year: '2023', cours: '1', season: '冬' },
@@ -41,7 +42,7 @@ export default function Articles() {
         try {
             setIsLoading(true);
 
-            const { data } = await axios.get(`https://api.moemoe.tokyo/anime/v1/master/${selectSeason}`);
+            const { data } = await axios.get(`${API_ENDPOINT.ANIME}${selectSeason}`);
             setRows(data);
 
             setIsLoading(false);

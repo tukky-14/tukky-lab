@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
+import { API_ENDPOINT } from '../../constants/api';
 
 export default function NextMCU() {
     const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +14,7 @@ export default function NextMCU() {
     useLayoutEffect(() => {
         (async () => {
             setIsLoading(true);
-            const { data } = await axios.get('https://whenisthenextmcufilm.com/api');
+            const { data } = await axios.get(API_ENDPOINT.NEXT_MCU);
             setMovieData(data);
             setIsLoading(false);
         })();
