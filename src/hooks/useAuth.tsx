@@ -1,7 +1,7 @@
 import { Amplify, Auth } from 'aws-amplify';
 import { useRouter } from 'next/router';
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import AwsConfigAuth from '../aws-config/auth';
+import AwsConfigAuth from '../awsConfig/auth';
 
 Amplify.configure({ Auth: AwsConfigAuth });
 

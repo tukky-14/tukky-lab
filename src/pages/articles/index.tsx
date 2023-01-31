@@ -1,7 +1,7 @@
 import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { DataGrid, GridColDef, GridRowsProp, jaJP } from '@mui/x-data-grid';
 import React, { useReducer, useState } from 'react';
-import API from '../../aws-config/api';
+import API from '../../awsConfig/api';
 import { QiitaColumns } from '../../components/ColumnsQiita';
 import { ZennColumns } from '../../components/ColumnsZenn';
 import CustomToolbar from '../../components/CustomToolbar';

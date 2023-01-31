@@ -1,6 +1,6 @@
 import { Box, Button } from '@mui/material';
 import React, { useState } from 'react';
-import API from '../../aws-config/api';
+import API from '../../awsConfig/api';
 import Emotions from '../../components/Emotions';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';

@@ -1,7 +1,7 @@
 import { Box, Button } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import Webcam from 'react-webcam';
-import API from '../../aws-config/api';
+import API from '../../awsConfig/api';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
