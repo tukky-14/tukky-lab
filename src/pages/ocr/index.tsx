@@ -76,7 +76,6 @@ export default function OCR() {
                     </Box>
                 </div>
             </MainContents>
-            <Footer />
         </PrivateRoute>
     );
 }

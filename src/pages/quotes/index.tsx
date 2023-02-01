@@ -49,7 +49,6 @@ export default function Quotes({ quotes }: any) {
                     </div>
                 </div>
             </MainContents>
-            <Footer />
         </PrivateRoute>
     );
 }

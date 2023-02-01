@@ -115,7 +115,6 @@ export default function Emotion() {
                     <Emotions emotions={emotions} />
                 </div>
             </MainContents>
-            <Footer />
         </PrivateRoute>
     );
 }

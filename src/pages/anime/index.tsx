@@ -100,7 +100,6 @@ export default function Articles() {
                     />
                 </div>
             </MainContents>
-            <Footer />
         </PrivateRoute>
     );
 }

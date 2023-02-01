@@ -37,7 +37,6 @@ export default function NextMCU() {
                     </div>
                 )}
             </MainContents>
-            <Footer />
         </PrivateRoute>
     );
 }

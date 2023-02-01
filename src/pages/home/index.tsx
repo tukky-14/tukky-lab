@@ -80,7 +80,6 @@ export default function Home() {
                     </Expand>
                 </div>
             </MainContents>
-            <Footer />
         </PrivateRoute>
     );
 }
