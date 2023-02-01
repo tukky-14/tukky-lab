@@ -10,9 +10,9 @@ const MainContents: React.FC<Props> = (props) => {
     const { children, title } = props;
 
     return (
-        <section className="w-full h-full flex flex-1 bg-gray-50 overflow-scroll">
+        <section className="w-full h-full flex flex-1 bg-gray-50">
             <Sidebar />
-            <main className="flex-1 pt-6 pl-4">
+            <main className="flex-1 pt-6 pl-4 overflow-scroll">
                 <p className="text-xl">{title}</p>
                 {children}
             </main>
