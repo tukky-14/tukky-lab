@@ -22,7 +22,9 @@ const Sidebar = () => {
                     {sideberOpen && <span className="hidden sm:inline pl-3 text-sm lg:text-base">{data.title}</span>}
                 </Link>
             ))}
-            <p className="w-full text-center sm:text-left sm:ml-4 leading-6 text-sm absolute bottom-0">&copy; 2023 tukky</p>
+            {sideberOpen && (
+                <p className="w-full text-center sm:text-left sm:ml-4 leading-6 text-sm absolute bottom-0">&copy; 2023 tukky</p>
+            )}
         </aside>
     );
 };
