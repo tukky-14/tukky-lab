@@ -94,12 +94,12 @@ export default function HttpCat() {
         <PrivateRoute>
             <Header />
             <MainContents title="HTTP猫">
-                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mr-6 mt-2 mb-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mr-6 mt-2 mb-10">
                     {httpCodes.map((obj: { code: string; display: boolean }, index: number) => (
                         <>
                             <button
                                 hidden={obj.display}
-                                className="border text-center text-2xl h-60 bg-gray-100 hover:bg-gray-300"
+                                className="border text-center text-2xl h-80 bg-gray-100 hover:bg-gray-300"
                                 onClick={handleButtonClick}
                                 key={index}
                             >
@@ -107,7 +107,7 @@ export default function HttpCat() {
                             </button>
                             {obj.display && (
                                 <img
-                                    className="h-60 block m-auto"
+                                    className="h-80 block m-auto"
                                     src={`${API_ENDPOINT.HTTP_CAT}${obj.code}.jpg`}
                                     alt="HTTPステータスを例えた猫の画像"
                                 />
