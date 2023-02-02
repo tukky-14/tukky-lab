@@ -4,7 +4,6 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { AnimeColumns } from '../../components/ColumnsAnime';
 import CustomToolbar from '../../components/CustomToolbar';
-import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';

@@ -5,7 +5,6 @@ import API from '../../awsConfig/api';
 import { QiitaColumns } from '../../components/ColumnsQiita';
 import { ZennColumns } from '../../components/ColumnsZenn';
 import CustomToolbar from '../../components/CustomToolbar';
-import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';

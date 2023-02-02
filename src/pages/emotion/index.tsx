@@ -2,7 +2,6 @@ import { Box, Button } from '@mui/material';
 import React, { useState } from 'react';
 import API from '../../awsConfig/api';
 import Emotions from '../../components/Emotions';
-import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
