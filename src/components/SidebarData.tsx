@@ -1,3 +1,4 @@
+import CastleIcon from '@mui/icons-material/Castle';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import HomeIcon from '@mui/icons-material/Home';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
@@ -47,5 +48,10 @@ export const SidebarData = [
         title: 'HTTP猫',
         icon: <PetsIcon />,
         link: '/httpcat',
+    },
+    {
+        title: 'ディズニーキャラ',
+        icon: <CastleIcon />,
+        link: '/disney',
     },
 ];

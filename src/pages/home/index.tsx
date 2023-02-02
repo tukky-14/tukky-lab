@@ -78,6 +78,13 @@ export default function Home() {
                         </a>
                         を使用させていただきました。かわいい。
                     </Expand>
+                    <Expand title="ディズニーキャラ">
+                        7000を超えるディズニーのキャラクターをランダムで取得します。
+                        <a className="text-blue-600 hover:underline" href="https://disneyapi.dev/" target="_blank" rel="noreferrer">
+                            Disney API
+                        </a>
+                        を使用させていただきました。ほとんど知らないキャラクターが出てきます。ミッキーが出せたら超ラッキーです！
+                    </Expand>
                 </div>
             </MainContents>
         </PrivateRoute>
