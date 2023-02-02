@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import axios from 'axios';
 import React, { useLayoutEffect, useState } from 'react';
 import Footer from '../../components/Footer';
@@ -10,6 +11,7 @@ import { API_ENDPOINT } from '../../constants/api';
 export default function NextMCU() {
     const [isLoading, setIsLoading] = useState(false);
     const [movieData, setMovieData] = useState<any>({});
+    const [translateText, setTranslateText] = useState('');
 
     useLayoutEffect(() => {
         (async () => {
@@ -20,19 +22,40 @@ export default function NextMCU() {
         })();
     }, []);
 
+    const handleTranslateClick = async () => {
+        try {
+            if (translateText) {
+                return;
+            }
+            setIsLoading(true);
+            const { data } = await axios.get(`${API_ENDPOINT.GOOGLE_TRANSLATE}?text=${movieData.overview}&source=en&target=ja`);
+            setTranslateText(data.text);
+            setIsLoading(false);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <PrivateRoute>
             <Loading open={isLoading} />
             <Header />
             <MainContents title="MCU次回作">
                 {!isLoading && (
-                    <div className="w-full sm:w-1/2 mt-2 lg:flex pr-4">
-                        <img className="w-full sm:w-2/5" src={movieData.poster_url} alt="次回作MCU映画ポスター画像" />
-                        <div className="w-full sm:w-2/3 sm:ml-4">
-                            <p className="font-bold">『{movieData.title}』</p>
-                            <p className="text-right">{movieData.release_date}</p>
-                            <p>{movieData.overview}</p>
-                            <br />
+                    <div className="w-full sm:w-2/3 lg:w-full mt-2 lg:flex pr-4">
+                        <img className="w-full sm:w-2/5 block" src={movieData.poster_url} alt="次回作MCU映画ポスター画像" />
+                        <div className="flex">
+                            <div className="w-full sm:w-2/3 sm:ml-4">
+                                <p className="font-bold">『{movieData.title}』</p>
+                                <p className="text-right">{movieData.release_date}</p>
+                                <p>{movieData.overview}</p>
+                                <div className="my-2 text-center">
+                                    <Button variant="outlined" onClick={handleTranslateClick}>
+                                        翻訳
+                                    </Button>
+                                </div>
+                                {translateText && <p>{translateText}</p>}
+                            </div>
                         </div>
                     </div>
                 )}

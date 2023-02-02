@@ -31,7 +31,6 @@ export default function OCR() {
                 },
             };
             const { body } = await API.put('dev', '/ocr', putApiInit);
-            console.log('body:', body);
             if (!Object.keys(body.TextDetections).length) {
                 alert('文字の検出に失敗しました。');
                 setIsLoading(false);

@@ -34,7 +34,7 @@ export default function Home() {
                         >
                             MCU-Countdown
                         </a>
-                        を使用させていただきました。
+                        を使用させていただきました。「翻訳」ボタンはGoogle App Scriptを利用して公開した翻訳用のAPIを使用しています。
                     </Expand>
                     <Expand title="アニメ情報">
                         季節別のアニメのリストを取得してグリッドに展開します。
@@ -72,6 +72,7 @@ export default function Home() {
                         Rekognitionを使用してテキストを検出します。日本語は検出できません。。
                     </Expand>
                     <Expand title="HTTP猫">
+                        HTTPステータスコードのボタンを押すと、コードに応じた猫の画像を表示します。
                         HTTPステータスを猫の画像で取得できる
                         <a className="text-blue-600 hover:underline" href="https://http.cat/" target="_blank" rel="noreferrer">
                             こちら
