@@ -31,6 +31,7 @@ export default function NextMCU() {
             setTranslateText(data.text);
             setIsLoading(false);
         } catch (error) {
+            setIsLoading(false);
             console.error(error);
         }
     };

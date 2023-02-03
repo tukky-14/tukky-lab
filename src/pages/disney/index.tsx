@@ -44,6 +44,7 @@ export default function DisneyCharacter() {
             setCharactersData(newCharactersData);
             setIsLoading(false);
         } catch (error) {
+            setIsLoading(false);
             console.error(error);
         }
     };
