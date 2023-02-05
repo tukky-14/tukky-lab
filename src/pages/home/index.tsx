@@ -85,6 +85,13 @@ export default function Home() {
                         </a>
                         を使用させていただきました。ほとんど知らないキャラクターが出てきます。ミッキーが出せたら超ラッキーです！
                     </Expand>
+                    <Expand title="ポケモン">
+                        みんな大好きポケモンのAPI、
+                        <a className="text-blue-600 hover:underline" href="https://pokeapi.co/" target="_blank" rel="noreferrer">
+                            pokeapi
+                        </a>
+                        を使用してみました。1008までの図鑑番号を入力して「表示」を押下すると、ポケモンの情報を表示します。
+                    </Expand>
                 </div>
             </MainContents>
         </PrivateRoute>

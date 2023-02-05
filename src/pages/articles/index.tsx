@@ -87,7 +87,7 @@ export default function Articles() {
                 </div>
                 <div
                     style={{
-                        height: 540,
+                        height: 500,
                         maxHeight: '100%',
                         width: '100%',
                         padding: '0 1rem 1rem 0',

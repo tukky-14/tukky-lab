@@ -1,5 +1,6 @@
 import CastleIcon from '@mui/icons-material/Castle';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
+import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
 import HomeIcon from '@mui/icons-material/Home';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import MovieFilterIcon from '@mui/icons-material/MovieFilter';
@@ -53,5 +54,10 @@ export const SidebarData = [
         title: 'ディズニーキャラ',
         icon: <CastleIcon />,
         link: '/disney',
+    },
+    {
+        title: 'ポケモン',
+        icon: <FlipCameraAndroidIcon />,
+        link: '/pokemon',
     },
 ];
