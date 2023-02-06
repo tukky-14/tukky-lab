@@ -1,4 +1,5 @@
 import CastleIcon from '@mui/icons-material/Castle';
+import ConstructionIcon from '@mui/icons-material/Construction';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
 import HomeIcon from '@mui/icons-material/Home';
@@ -59,5 +60,10 @@ export const SidebarData = [
         title: 'ポケモン',
         icon: <FlipCameraAndroidIcon />,
         link: '/pokemon',
+    },
+    {
+        title: '便利サイト',
+        icon: <ConstructionIcon />,
+        link: '/useful',
     },
 ];

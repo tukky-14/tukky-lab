@@ -92,6 +92,7 @@ export default function Home() {
                         </a>
                         を使用してみました。1008までの図鑑番号を入力して「表示」を押下すると、ポケモンの情報を表示します。
                     </Expand>
+                    <Expand title="便利サイト">便利サイトをまとめました。</Expand>
                 </div>
             </MainContents>
         </PrivateRoute>

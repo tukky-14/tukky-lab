@@ -58,13 +58,8 @@ export default function DisneyCharacter() {
                     {charactersData.map((data: { id: number; name: string; imageUrl: string }) => (
                         <>
                             {data.imageUrl && (
-                                <div>
-                                    <img
-                                        className="h-80 m-auto"
-                                        src={data.imageUrl}
-                                        alt="ディズニーキャラクターの画像"
-                                        key={data.id}
-                                    />
+                                <div key={data.id}>
+                                    <img className="h-80 m-auto" src={data.imageUrl} alt="ディズニーキャラクターの画像" />
                                     <p className="text-center text-xl">
                                         {data.id}. {data.name}
                                     </p>
