@@ -11,11 +11,9 @@ const sites = [
     { url: 'https://tameshigaki.jp/', comment: 'いろんなフォントを試せて楽しいです。' },
     { url: 'https://o-dan.net/ja/', comment: '無料の画像をまさに横断(O-DAN)検索できます。' },
     { url: 'https://www.logoai.com/', comment: 'ロゴを自動で作成します。' },
-    { url: 'https://ipinfo.io/', comment: 'グローバルIPアドレスを取得する処理を簡単に実装できます。' },
-    { url: 'http://www.copymecha.com/index.php', comment: 'キャッチコピーのアイデア出しにできます。' },
-    { url: 'https://m.kuku.lu/', comment: '登録しないでメールを作り放題できます。' },
-    { url: 'https://romannurik.github.io/SlidesCodeHighlighter/', comment: 'ソースコードに色付けできます。' },
     { url: 'https://tyoudoii-illust.com/', comment: 'ちょうどいいイラストが見つかります。' },
+    { url: 'https://www.flaticon.com/', comment: 'フリーのアイコンを探せます。' },
+    { url: 'https://command-lab.com/practice/', comment: 'ショートカットの練習に最適です。' },
 ];
 
 export const getStaticProps = async () => {
