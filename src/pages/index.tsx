@@ -60,9 +60,7 @@ export default function Home() {
                     </form>
                 </div>
                 <Link href="signup">
-                    <button className="block m-auto text-blue-600 hover:underline">
-                        サインイン
-                    </button>
+                    <button className="block m-auto text-blue-600 hover:underline">サインイン</button>
                 </Link>
             </main>
         </PrivateRoute>
