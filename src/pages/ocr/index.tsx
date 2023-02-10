@@ -57,21 +57,27 @@ export default function OCR() {
             <MainContents title="OCR">
                 <div className="sm:flex gap-4 mt-2 mr-2 -ml-2 sm:ml-0">
                     <div className="mb-2">
-                        <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" videoConstraints={videoConstraints} />
+                        <Webcam
+                            className="m-auto"
+                            audio={false}
+                            ref={webcamRef}
+                            screenshotFormat="image/jpeg"
+                            videoConstraints={videoConstraints}
+                        />
                         <div className="w-full mt-4 flex justify-center">
                             <Button className="w-full sm:w-2/3" variant="contained" onClick={handleAnalysisClick}>
                                 分析
                             </Button>
                         </div>
                     </div>
-                    <Box sx={{ width: 300, height: 400 }}>
-                        <h3 className="mb-1 text-center">【分析結果】</h3>
+                    <div className="w-[300px] h-[465px] m-auto sm:m-0">
+                        <h3 className="mb-1 text-center w-full">【分析結果】</h3>
                         <div className="w-full h-4/5 bg-gray-100 rounded border p-2 overflow-scroll">
                             {ocrText.map((text: string, index: number) => (
                                 <p key={index}>{text}</p>
                             ))}
                         </div>
-                    </Box>
+                    </div>
                 </div>
             </MainContents>
         </PrivateRoute>

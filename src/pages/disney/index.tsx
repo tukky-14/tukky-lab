@@ -56,16 +56,16 @@ export default function DisneyCharacter() {
             <MainContents title="ディズニーキャラクター">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mr-6 mt-2 mb-10">
                     {charactersData.map((data: { id: number; name: string; imageUrl: string }) => (
-                        <>
+                        <div key={data.id}>
                             {data.imageUrl && (
-                                <div key={data.id}>
+                                <div>
                                     <img className="h-80 m-auto" src={data.imageUrl} alt="ディズニーキャラクターの画像" />
                                     <p className="text-center text-xl">
                                         {data.id}. {data.name}
                                     </p>
                                 </div>
                             )}
-                        </>
+                        </div>
                     ))}
                 </div>
                 <div className="text-center">

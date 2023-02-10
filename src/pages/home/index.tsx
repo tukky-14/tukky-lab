@@ -10,7 +10,7 @@ export default function Home() {
             <Header />
             <MainContents title="ホーム">
                 このサイトは学習した内容をアウトプットする実験用として作成しています。
-                <div className="my-2 mr-4">
+                <div className="mt-2 mr-4 mb-16">
                     <Expand title="ランダム名言">
                         「表示」ボタンを押下すると、DynamoDBから取得したジョジョの名言をランダムに表示します。 名言は
                         <a

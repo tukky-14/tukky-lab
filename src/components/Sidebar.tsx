@@ -1,3 +1,4 @@
+import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Drawer } from '@mui/material';
 import Link from 'next/link';
@@ -48,6 +49,9 @@ const Sidebar = () => {
                         </Link>
                     ))}
                 </div>
+                <button className="sm:hidden absolute bottom-0 left-0 p-2 z-10 text-white" onClick={() => setOpen(false)}>
+                    <CloseIcon fontSize="large" />
+                </button>
             </Drawer>
         </>
     );
