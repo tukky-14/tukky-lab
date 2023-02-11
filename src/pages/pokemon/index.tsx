@@ -64,8 +64,8 @@ export default function Pokemon() {
                     </Button>
                 </div>
                 {pokemonData.imageUrl && (
-                    <div className="w-full sm:w-1/3 my-4 pr-4 text-right">
-                        <Card variant="outlined">
+                    <div className="w-full sm:w-1/3 my-4 text-right">
+                        <Card className="p-2" variant="outlined">
                             <img src={pokemonData.imageUrl} alt="ポケモンの画像" />
                             <p>
                                 No.{pokemonData.id} {pokemonData.name}

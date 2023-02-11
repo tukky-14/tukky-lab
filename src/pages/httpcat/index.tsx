@@ -95,12 +95,11 @@ export default function HttpCat() {
             <MainContents title="HTTP猫">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mr-6 mt-2 mb-10">
                     {httpCodes.map((obj: { code: string; display: boolean }, index: number) => (
-                        <>
+                        <div key={index} className="w-full">
                             <button
                                 hidden={obj.display}
-                                className="border text-center text-2xl h-80 bg-gray-100 hover:bg-gray-300"
+                                className="w-full border text-center text-2xl h-80 bg-gray-100 hover:bg-gray-300"
                                 onClick={handleButtonClick}
-                                key={index}
                             >
                                 {obj.code}
                             </button>
@@ -111,7 +110,7 @@ export default function HttpCat() {
                                     alt="HTTPステータスを例えた猫の画像"
                                 />
                             )}
-                        </>
+                        </div>
                     ))}
                 </div>
             </MainContents>
