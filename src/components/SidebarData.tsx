@@ -3,6 +3,7 @@ import ConstructionIcon from '@mui/icons-material/Construction';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
 import HomeIcon from '@mui/icons-material/Home';
+import LaptopChromebookIcon from '@mui/icons-material/LaptopChromebook';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import MovieFilterIcon from '@mui/icons-material/MovieFilter';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
@@ -65,5 +66,10 @@ export const SidebarData = [
         title: '便利サイト',
         icon: <ConstructionIcon />,
         link: '/useful',
+    },
+    {
+        title: 'プログラミング言語',
+        icon: <LaptopChromebookIcon />,
+        link: '/programming',
     },
 ];

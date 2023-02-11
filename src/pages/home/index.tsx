@@ -93,6 +93,13 @@ export default function Home() {
                         を使用してみました。1008までの図鑑番号を入力して「表示」を押下すると、ポケモンの情報を表示します。
                     </Expand>
                     <Expand title="便利サイト">便利サイトをまとめました。</Expand>
+                    <Expand title="プログラミング言語">
+                        プログラミング言語を一覧で表示します。アイコンは
+                        <a className="text-blue-600 hover:underline" href="https://devicon.dev/" target="_blank" rel="noreferrer">
+                            DEVICON
+                        </a>
+                        を使用しました。
+                    </Expand>
                 </div>
             </MainContents>
         </PrivateRoute>
