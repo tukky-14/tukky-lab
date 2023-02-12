@@ -5,21 +5,6 @@ import Header from '../../components/Header';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
 
-export const getStaticProps = async () => {
-    const getApiInit = {
-        headers: {},
-    };
-    const res = await API.get('dev', '/quotes', getApiInit);
-    const quotes = res.map((data: any) => {
-        return { quote: data.quote, character: data.character };
-    });
-    return {
-        props: {
-            quotes,
-        },
-    };
-};
-
 export default function Quotes({ quotes }: any) {
     const [quote, setQuote] = useState('');
     const [character, setCharacter] = useState();
@@ -51,3 +36,18 @@ export default function Quotes({ quotes }: any) {
         </PrivateRoute>
     );
 }
+
+export const getStaticProps = async () => {
+    const getApiInit = {
+        headers: {},
+    };
+    const res = await API.get('dev', '/quotes', getApiInit);
+    const quotes = res.map((data: any) => {
+        return { quote: data.quote, character: data.character };
+    });
+    return {
+        props: {
+            quotes,
+        },
+    };
+};

@@ -16,23 +16,6 @@ const sites = [
     { url: 'https://command-lab.com/practice/', comment: 'ショートカットの練習に最適です。' },
 ];
 
-export const getStaticProps = async () => {
-    const siteInfoArray = [];
-
-    for (let i = 0; i < sites.length; i++) {
-        const response = await axios.get(sites[i].url);
-        const $ = cheerio.load(response.data);
-        const title = $("meta[property='og:title']")?.attr('content') || '';
-        const description = $("meta[property='og:description']")?.attr('content') || '';
-        const image = $("meta[property='og:image']")?.attr('content') || '';
-        siteInfoArray.push({ ...sites[i], title, description, image });
-    }
-
-    return {
-        props: { siteInfoArray },
-    };
-};
-
 type Props = {
     siteInfoArray: [{ title: string; description: string; image: string; url: string; comment: string }];
 };
@@ -77,3 +60,20 @@ export default function Useful(props: Props) {
         </PrivateRoute>
     );
 }
+
+export const getStaticProps = async () => {
+    const siteInfoArray = [];
+
+    for (let i = 0; i < sites.length; i++) {
+        const response = await axios.get(sites[i].url);
+        const $ = cheerio.load(response.data);
+        const title = $("meta[property='og:title']")?.attr('content') || '';
+        const description = $("meta[property='og:description']")?.attr('content') || '';
+        const image = $("meta[property='og:image']")?.attr('content') || '';
+        siteInfoArray.push({ ...sites[i], title, description, image });
+    }
+
+    return {
+        props: { siteInfoArray },
+    };
+};
