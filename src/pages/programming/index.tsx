@@ -1,24 +1,15 @@
 import { Card } from '@mui/material';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
-import React, { useEffect, useState } from 'react';
-import API from '../../awsConfig/api';
 import Header from '../../components/Header';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
 
-const langArray = [
-    { name: 'HTML', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-    { name: 'CSS', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-    { name: 'JavaScript', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-    { name: 'TypeScript', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-    { name: 'Node.js', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-    { name: 'Java', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-    { name: 'Python', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-    { name: 'Ruby', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg' },
-];
+type Props = {
+    langArray: [{ name: string; imageUrl: string }];
+};
 
-export default function Programming() {
-    useEffect(() => {});
+export default function Programming(props: Props) {
+    const { langArray } = props;
 
     return (
         <PrivateRoute>
@@ -38,3 +29,23 @@ export default function Programming() {
         </PrivateRoute>
     );
 }
+
+export const getStaticProps = async () => {
+    const doc = new GoogleSpreadsheet(process.env.NEXT_PUBLIC_API_GOOGLE_SHEET_ID);
+    doc.useServiceAccountAuth({
+        client_email: process.env.NEXT_PUBLIC_API_GOOGLE_SHEET_CLIENT_EMAIL || '',
+        private_key: (process.env.NEXT_PUBLIC_API_GOOGLE_SHEET_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
+    });
+    await doc.loadInfo();
+
+    const sheet = doc.sheetsByIndex[0];
+    const rows = await sheet.getRows();
+    const langArray = rows.map((row) => ({
+        name: row.name,
+        imageUrl: row.imageUrl,
+    }));
+
+    return {
+        props: { langArray },
+    };
+};
