@@ -94,11 +94,11 @@ export default function Home() {
                     </Expand>
                     <Expand title="便利サイト">便利サイトをまとめました。</Expand>
                     <Expand title="プログラミング言語">
-                        プログラミング言語を一覧で表示します。アイコンは
+                        Googleスプレッドシートから取得したプログラミング言語を一覧で表示します。アイコンは
                         <a className="text-blue-600 hover:underline" href="https://devicon.dev/" target="_blank" rel="noreferrer">
                             DEVICON
                         </a>
-                        を使用しました。
+                        を使用しました。ホバーするとWikipediaの説明文を表示します。
                     </Expand>
                 </div>
             </MainContents>
