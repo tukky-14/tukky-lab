@@ -2,14 +2,16 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 import { useAuth } from '../hooks/useAuth';
 import Loading from './Loading';
 
 export default function AccountIcon() {
-    const { isLoading, username, signOut } = useAuth();
+    const { isLoading, username, signOut, isAuthenticated } = useAuth();
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+    const router = useRouter();
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -18,7 +20,11 @@ export default function AccountIcon() {
         setAnchorEl(null);
     };
 
-    const executeSignOut = () => {
+    const handleSignInClick = () => {
+        router.push('/');
+    };
+
+    const handleSignOutClick = () => {
         const answer = confirm('本当にログアウトしますか？');
         if (!answer) {
             return;
@@ -38,10 +44,10 @@ export default function AccountIcon() {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
-                sx={{ color: 'white' }}
+                sx={{ color: 'white', width: '10rem' }}
             >
                 <AccountCircleIcon />
-                <span className="text-sm sm:text-base ml-1">{username}</span>
+                <p className="text-sm sm:text-base ml-1">{username || 'John do'}</p>
             </Button>
             <Menu
                 id="basic-menu"
@@ -52,8 +58,12 @@ export default function AccountIcon() {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={handleClose}>マイアカウント</MenuItem>
-                <MenuItem onClick={executeSignOut}>ログアウト</MenuItem>
+                {/* <MenuItem onClick={handleClose}>マイアカウント</MenuItem> */}
+                {isAuthenticated ? (
+                    <MenuItem onClick={handleSignOutClick}>ログアウト</MenuItem>
+                ) : (
+                    <MenuItem onClick={handleSignInClick}>ログイン</MenuItem>
+                )}
             </Menu>
         </div>
     );

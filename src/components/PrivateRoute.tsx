@@ -15,13 +15,13 @@ const PrivateRoute: React.FC<ReactChildren> = ({ children }) => {
         return <Loading open={true} />;
     }
 
-    if (!isAuthenticated && router.pathname !== '/') {
-        router.push('/');
-    }
+    // if (!isAuthenticated && router.pathname !== '/') {
+    //     router.push('/');
+    // }
 
-    if (isAuthenticated && router.pathname === '/') {
-        router.push('/home');
-    }
+    // if (isAuthenticated && router.pathname === '/') {
+    //     router.push('/home');
+    // }
 
     return <>{children}</>;
 };

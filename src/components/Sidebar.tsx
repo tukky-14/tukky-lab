@@ -22,7 +22,7 @@ const Sidebar = () => {
     return (
         <>
             <aside className={`hidden sm:block ${sideberOpen ? 'w-1/6' : 'w-14'} bg-blue-100 flex flex-col relative`}>
-                <button className="hidden sm:inline py-2 pl-4 text-left hover:bg-white" onClick={handleMenuClick}>
+                <button className="hidden sm:inline w-14 py-2 pl-4 text-left hover:bg-white" onClick={handleMenuClick}>
                     <MenuIcon />
                 </button>
                 {SidebarData.map((data: { title: string; icon: any; link: string }, index: number) => (
