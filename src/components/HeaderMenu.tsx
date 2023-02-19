@@ -47,7 +47,7 @@ export default function AccountIcon() {
                 sx={{ color: 'white', width: '12rem', display: 'flex', justifyContent: 'flex-end' }}
             >
                 <AccountCircleIcon />
-                <p className="text-sm sm:text-base ml-1">{username || 'John do'}</p>
+                <p className="text-sm sm:text-base ml-1">{username || 'John Doe'}</p>
             </Button>
             <Menu
                 id="basic-menu"

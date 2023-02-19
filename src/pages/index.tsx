@@ -98,7 +98,7 @@ export default function Home() {
                         <a className="text-blue-600 hover:underline" href="https://devicon.dev/" target="_blank" rel="noreferrer">
                             DEVICON
                         </a>
-                        を使用しました。ホバーするとWikipediaの説明文を表示します。
+                        を使用しました。ホバーすると言語の説明文を表示します。
                     </Expand>
                 </div>
             </MainContents>
