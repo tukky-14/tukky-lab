@@ -10,14 +10,14 @@ import AccountIcon from './HeaderMenu';
 export default function Header() {
     const { isAuthenticated } = useAuth();
     const router = useRouter();
-    const publicPathList = ['/', '/signup', '/signup-confirm'];
+    const publicPathList = ['/login', '/signup', '/signup-confirm'];
     const titlePosition = publicPathList.includes(router.pathname) ? 'justify-center' : 'justify-left';
 
     return (
         <Box>
             <AppBar position="static">
                 <Toolbar>
-                    <Link href="/home" className={`w-full flex ${titlePosition}`}>
+                    <Link href="/" className={`w-full flex ${titlePosition}`}>
                         <img className="w-6 sm:w-8 h-6 sm:h-8" src="/icon.png" alt="フラスコの画像" />
                         <p className="sm:text-3xl">Tukky Lab</p>
                     </Link>

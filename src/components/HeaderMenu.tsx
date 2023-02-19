@@ -21,7 +21,7 @@ export default function AccountIcon() {
     };
 
     const handleSignInClick = () => {
-        router.push('/');
+        router.push('/login');
     };
 
     const handleSignOutClick = () => {
@@ -44,7 +44,7 @@ export default function AccountIcon() {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
-                sx={{ color: 'white', width: '10rem' }}
+                sx={{ color: 'white', width: '12rem', display: 'flex', justifyContent: 'flex-end' }}
             >
                 <AccountCircleIcon />
                 <p className="text-sm sm:text-base ml-1">{username || 'John do'}</p>
