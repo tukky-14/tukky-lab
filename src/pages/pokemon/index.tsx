@@ -1,4 +1,4 @@
-import { Button, Card, TextField } from '@mui/material';
+import { Button, Card, TextField, Tooltip } from '@mui/material';
 import axios from 'axios';
 import { useState } from 'react';
 import Header from '../../components/Header';
@@ -15,6 +15,7 @@ export default function Pokemon() {
         imageUrl: '',
         name: '',
         genus: '',
+        flavor_text: '',
     });
 
     const handleButtonClick = async () => {
@@ -37,6 +38,7 @@ export default function Pokemon() {
                 imageUrl: data.sprites.other['official-artwork'].front_default,
                 name: species.names.find((v: any) => v.language.name == 'ja')?.name,
                 genus: species.genera.find((v: any) => v.language.name == 'ja')?.genus,
+                flavor_text: species.flavor_text_entries.find((v: any) => v.language.name == 'ja')?.flavor_text,
             });
 
             setIsLoading(false);
@@ -65,13 +67,15 @@ export default function Pokemon() {
                 </div>
                 {pokemonData.imageUrl && (
                     <div className="w-full sm:w-1/3 my-4 text-right">
-                        <Card className="p-2" variant="outlined">
-                            <img src={pokemonData.imageUrl} alt="ポケモンの画像" />
-                            <p>
-                                No.{pokemonData.id} {pokemonData.name}
-                            </p>
-                            <p>{pokemonData.genus}</p>
-                        </Card>
+                        <Tooltip title={pokemonData.flavor_text}>
+                            <Card className="p-2" variant="outlined">
+                                <img src={pokemonData.imageUrl} alt="ポケモンの画像" />
+                                <p>
+                                    No.{pokemonData.id} {pokemonData.name}
+                                </p>
+                                <p>{pokemonData.genus}</p>
+                            </Card>
+                        </Tooltip>
                     </div>
                 )}
             </MainContents>
