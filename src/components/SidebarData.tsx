@@ -74,7 +74,7 @@ export const SidebarData = [
         link: '/programming',
     },
     {
-        title: 'いらすとや画像',
+        title: 'いらすとや検索',
         icon: <FaceRetouchingNaturalIcon />,
         link: '/irasutoya',
     },
