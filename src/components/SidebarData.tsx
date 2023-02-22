@@ -1,6 +1,7 @@
 import CastleIcon from '@mui/icons-material/Castle';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
+import FaceRetouchingNaturalIcon from '@mui/icons-material/FaceRetouchingNatural';
 import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
 import HomeIcon from '@mui/icons-material/Home';
 import LaptopChromebookIcon from '@mui/icons-material/LaptopChromebook';
@@ -71,5 +72,10 @@ export const SidebarData = [
         title: 'プログラミング言語',
         icon: <LaptopChromebookIcon />,
         link: '/programming',
+    },
+    {
+        title: 'いらすとや画像',
+        icon: <FaceRetouchingNaturalIcon />,
+        link: '/irasutoya',
     },
 ];

@@ -100,6 +100,9 @@ export default function Home() {
                         </a>
                         を使用しました。ホバーすると言語の説明文を表示します。
                     </Expand>
+                    <Expand title="いらすとや検索">
+                        検索キーワードを入れて「検索」を押すと、いらすとやの画像を検索して表示します。表示された画像をクリックするといらすとやのサイトに飛びます。
+                    </Expand>
                 </div>
             </MainContents>
         </PrivateRoute>
