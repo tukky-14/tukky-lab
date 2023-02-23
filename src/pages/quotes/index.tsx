@@ -42,7 +42,7 @@ export const getStaticProps = async () => {
         headers: {},
     };
     const res = await API.get('dev', '/quotes', getApiInit);
-    const quotes = res.map((data: any) => {
+    const quotes = res.map((data: { quote: string; character: string }) => {
         return { quote: data.quote, character: data.character };
     });
     return {

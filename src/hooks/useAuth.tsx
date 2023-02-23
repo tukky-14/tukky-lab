@@ -9,7 +9,7 @@ interface UseAuth {
     isLoading: boolean;
     isAuthenticated: boolean;
     username: string;
-    getAuthenticatedToken: () => Promise<any>;
+    getAuthenticatedToken: () => Promise<string>;
     signUp: (username: string, password: string, email: string) => Promise<Result>;
     confirmSignUp: (verificationCode: string) => Promise<Result>;
     signIn: (username: string, password: string) => Promise<Result>;
