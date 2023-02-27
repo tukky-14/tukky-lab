@@ -1,6 +1,7 @@
 import CastleIcon from '@mui/icons-material/Castle';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
+import ExploreIcon from '@mui/icons-material/Explore';
 import FaceRetouchingNaturalIcon from '@mui/icons-material/FaceRetouchingNatural';
 import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
 import HomeIcon from '@mui/icons-material/Home';
@@ -77,5 +78,10 @@ export const SidebarData = [
         title: 'いらすとや検索',
         icon: <FaceRetouchingNaturalIcon />,
         link: '/irasutoya',
+    },
+    {
+        title: 'connpass検索',
+        icon: <ExploreIcon />,
+        link: '/connpass',
     },
 ];
