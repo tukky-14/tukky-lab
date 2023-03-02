@@ -1,29 +1,55 @@
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { Button, TextField } from '@mui/material';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import axios from 'axios';
 import dayjs from 'dayjs';
 import { useState } from 'react';
+import API from '../../awsConfig/api';
 import Header from '../../components/Header';
+import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
-import { API_ENDPOINT } from '../../constants/api';
-
-// https://connpass.com/api/v1/event/?ymd=20220228
 
 export default function Connpass() {
+    const [isLoading, setIsLoading] = useState(false);
     const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+    const [events, setEvents] = useState([]);
 
-    const handleButtonClick = async () => {
-        const { data } = await axios.get(`${API_ENDPOINT.CONNPASS}?ymd=${date.replaceAll('-', '')}`);
-        console.log(data);
+    const handleSearchClick = async () => {
+        try {
+            if (date === 'Invalid Date') {
+                alert('有効な日付を入力してください');
+                return;
+            }
+            setIsLoading(true);
+
+            const getApiInit = {
+                queryStringParameters: {
+                    ymd: date.replaceAll('-', ''),
+                },
+            };
+            const { body } = await API.get('dev', '/connpass', getApiInit);
+            if (!Object.keys(body).length) {
+                alert('データは取得できませんでした');
+                setIsLoading(false);
+                return;
+            }
+            setEvents(body.sort((a: any) => (a.address !== 'オンライン' ? -1 : 1)));
+
+            setIsLoading(false);
+        } catch (error) {
+            setIsLoading(false);
+            console.log(error);
+        }
     };
 
     const handleDateChange = (date: any) => {
-        console.log(date);
+        console.log(date.format('YYYY-MM-DD'));
+        setDate(date.format('YYYY-MM-DD'));
     };
 
     return (
         <PrivateRoute>
+            <Loading open={isLoading} />
             <Header />
             <MainContents title="connpass検索">
                 <div className="flex w-full gap-4 my-3">
@@ -34,11 +60,36 @@ export default function Connpass() {
                         onChange={handleDateChange}
                         renderInput={(params) => <TextField {...params} />}
                     />
-                    <Button variant="contained" onClick={handleButtonClick}>
+                    <Button variant="contained" onClick={handleSearchClick}>
                         検索
                     </Button>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-4 mr-6 mt-2 mb-10"></div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4 mr-6 mt-2 mb-10">
+                    {events.map((event: any, index: number) => (
+                        <div key={index} className="relative h-80 border rounded-lg p-4 hover:bg-blue-200 duration-300">
+                            <h3 className="font-bold">{event.title}</h3>
+                            <p className="">{event.catch}</p>
+                            <div className="absolute bottom-2">
+                                <p>
+                                    時間：{event.started_at.split('T')[1].substr(0, 5)} ~{' '}
+                                    {event.ended_at.split('T')[1].substr(0, 5)}
+                                </p>
+                                <p>
+                                    定員：{event.limit}名（参加：{event.accepted} / 補欠：{event.waiting}）
+                                </p>
+                                <p>場所：{event.address}</p>
+                            </div>
+                            <a
+                                className="absolute bottom-2 right-2 text-blue-600 hover:scale-110 duration-300"
+                                href={event.event_url}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <OpenInNewIcon />
+                            </a>
+                        </div>
+                    ))}
+                </div>
             </MainContents>
         </PrivateRoute>
     );

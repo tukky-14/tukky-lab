@@ -103,6 +103,18 @@ export default function Home() {
                     <Expand title="いらすとや検索">
                         検索キーワードを入れて「検索」を押すと、いらすとやの画像を検索して表示します。表示された画像をクリックするといらすとやのサイトに飛びます。
                     </Expand>
+                    <Expand title="connpass検索">
+                        connpassのイベントを日付で検索します。
+                        <a
+                            className="text-blue-600 hover:underline"
+                            href="https://connpass.com/about/api/"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            connpass API
+                        </a>
+                        を使用させていただきました。オンラインと一部の近畿地方のイベントを表示します。
+                    </Expand>
                 </div>
             </MainContents>
         </PrivateRoute>
