@@ -32,7 +32,7 @@ const Sidebar = () => {
                     </Link>
                 ))}
                 {sideberOpen && (
-                    <p className="hidden sm:block w-full text-center sm:text-left sm:ml-4 leading-6 text-sm absolute bottom-0">
+                    <p className="hidden sm:block w-full text-center sm:text-left sm:ml-4 leading-6 text-xs absolute bottom-0">
                         &copy; 2023 tukky
                     </p>
                 )}
@@ -41,7 +41,7 @@ const Sidebar = () => {
                 <MenuIcon fontSize="large" />
             </button>
             <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
-                <div className="px-4 pt-12 flex flex-col gap-2 h-full bg-gray-600 text-white">
+                <div className="px-4 pt-2 flex flex-col gap-1 h-full bg-gray-600 text-white">
                     {SidebarData.map((data: { title: string; icon: any; link: string }, index: number) => (
                         <Link href={data.link} className="py-2 pl-4 flex items-center hover:bg-white" key={index}>
                             {data.icon}
