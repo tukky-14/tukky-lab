@@ -43,7 +43,6 @@ export default function Connpass() {
     };
 
     const handleDateChange = (date: any) => {
-        console.log(date.format('YYYY-MM-DD'));
         setDate(date.format('YYYY-MM-DD'));
     };
 

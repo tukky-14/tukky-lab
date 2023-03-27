@@ -1,7 +1,8 @@
 import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { DataGrid, GridRowsProp, jaJP } from '@mui/x-data-grid';
 import axios from 'axios';
-import { useState } from 'react';
+import dayjs from 'dayjs';
+import { useLayoutEffect, useState } from 'react';
 import { AnimeColumns } from '../../components/ColumnsAnime';
 import CustomToolbar from '../../components/CustomToolbar';
 import Header from '../../components/Header';
@@ -10,32 +11,33 @@ import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
 import { API_ENDPOINT } from '../../constants/api';
 
-const seasons = [
-    { year: '2023', cours: '2', season: '春' },
-    { year: '2023', cours: '1', season: '冬' },
-    { year: '2022', cours: '4', season: '秋' },
-    { year: '2022', cours: '3', season: '夏' },
-    { year: '2022', cours: '2', season: '春' },
-    { year: '2022', cours: '1', season: '冬' },
-    { year: '2021', cours: '4', season: '秋' },
-    { year: '2021', cours: '3', season: '夏' },
-    { year: '2021', cours: '2', season: '春' },
-    { year: '2021', cours: '1', season: '冬' },
-    { year: '2020', cours: '4', season: '秋' },
-    { year: '2020', cours: '3', season: '夏' },
-    { year: '2020', cours: '2', season: '春' },
-    { year: '2020', cours: '1', season: '冬' },
-];
-
 export default function Anime() {
     const [isLoading, setIsLoading] = useState(false);
-    const [selectSeason, setSelectSeason] = useState('2023/2');
+    const [seasons, setSeasons] = useState<any>([]);
+    const [selectSeason, setSelectSeason] = useState('');
     const [rows, setRows] = useState([] as GridRowsProp);
+
+    useLayoutEffect(() => {
+        const currentYear = dayjs().format('YYYY');
+        const targetSeasons = [];
+        const threeYearsAgo = Number(currentYear) - 3;
+
+        // 3年前から現在までの年を取得
+        for (let year = Number(currentYear); year >= threeYearsAgo; year--) {
+            targetSeasons.push(
+                { year: year.toString(), cours: '4', season: '秋' },
+                { year: year.toString(), cours: '3', season: '夏' },
+                { year: year.toString(), cours: '2', season: '春' },
+                { year: year.toString(), cours: '1', season: '冬' }
+            );
+        }
+        setSeasons(targetSeasons);
+        setSelectSeason(`${currentYear}/1`);
+    }, []);
 
     const handleSelectSiteChange = (event: SelectChangeEvent<string>) => {
         const selectSeason = event.target.value;
         setSelectSeason(selectSeason);
-        setRows([]);
     };
 
     const handleSearchClick = async () => {
@@ -44,6 +46,10 @@ export default function Anime() {
 
             const { data } = await axios.get(`${API_ENDPOINT.ANIME}${selectSeason}`);
             setRows(data);
+
+            if (!data.length) {
+                alert('データを取得できませんでした。\n情報が公開されるまでお待ちください。');
+            }
 
             setIsLoading(false);
         } catch (error) {
@@ -61,7 +67,7 @@ export default function Anime() {
                     <Select
                         size="small"
                         sx={{ width: '100%', marginRight: '1rem', height: '2rem' }}
-                        defaultValue="2023/1"
+                        value={selectSeason}
                         onChange={handleSelectSiteChange}
                     >
                         {seasons.map((season: { year: string; cours: string; season: string }, index: number) => (
