@@ -1,7 +1,7 @@
 import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { DataGrid, GridRowsProp, jaJP } from '@mui/x-data-grid';
 import axios from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AnimeColumns } from '../../components/ColumnsAnime';
 import CustomToolbar from '../../components/CustomToolbar';
 import Header from '../../components/Header';
@@ -27,9 +27,9 @@ const seasons = [
     { year: '2020', cours: '1', season: '冬' },
 ];
 
-export default function Articles() {
+export default function Anime() {
     const [isLoading, setIsLoading] = useState(false);
-    const [selectSeason, setSelectSeason] = useState('2023/1');
+    const [selectSeason, setSelectSeason] = useState('2023/2');
     const [rows, setRows] = useState([] as GridRowsProp);
 
     const handleSelectSiteChange = (event: SelectChangeEvent<string>) => {
