@@ -11,6 +11,7 @@ import PrivateRoute from '../../components/PrivateRoute';
 import { API_ENDPOINT } from '../../constants/api';
 
 const seasons = [
+    { year: '2023', cours: '2', season: '春' },
     { year: '2023', cours: '1', season: '冬' },
     { year: '2022', cours: '4', season: '秋' },
     { year: '2022', cours: '3', season: '夏' },
