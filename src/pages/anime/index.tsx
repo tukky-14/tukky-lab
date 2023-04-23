@@ -10,6 +10,7 @@ import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
 import { API_ENDPOINT } from '../../constants/api';
+import { Season } from '../../types/anime';
 
 export default function Anime() {
     const [isLoading, setIsLoading] = useState(false);
@@ -70,7 +71,7 @@ export default function Anime() {
                         value={selectSeason}
                         onChange={handleSelectSiteChange}
                     >
-                        {seasons.map((season: { year: string; cours: string; season: string }, index: number) => (
+                        {seasons.map((season: Season, index: number) => (
                             <MenuItem value={`${season.year}/${season.cours}`} key={index}>
                                 {season.year}年{season.season} 放送開始
                             </MenuItem>
