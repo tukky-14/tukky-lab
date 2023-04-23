@@ -6,7 +6,7 @@ import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
-import { EmotionProps } from '../../types/emotion';
+import { EmotionType } from '../../types/emotion';
 
 export default function Emotion() {
     const [isLoading, setIsLoading] = useState(false);
@@ -58,7 +58,7 @@ export default function Emotion() {
             }
 
             const results = body.FaceDetails[0].Emotions;
-            const newEmotions = emotions.map((emotion: EmotionProps, index: number) => {
+            const newEmotions = emotions.map((emotion: EmotionType, index: number) => {
                 switch (results[index].Type) {
                     case 'CALM':
                         return { type: '穏やか', confidence: `${results[index].Confidence.toFixed(2)}%` };
