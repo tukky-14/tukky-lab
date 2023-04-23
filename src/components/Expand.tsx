@@ -3,22 +3,14 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
+import { ExpandProps } from '../types/common';
 
-type Props = {
-    title: string;
-    children?: React.ReactNode;
-};
-
-const Expand = (props: Props) => {
+const Expand = (props: ExpandProps) => {
     const { title, children } = props;
 
     return (
         <Accordion>
-            <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-            >
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
                 <Typography>{title}</Typography>
             </AccordionSummary>
             <AccordionDetails>

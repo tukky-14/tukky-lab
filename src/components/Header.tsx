@@ -7,7 +7,6 @@ import { useAuth } from '../hooks/useAuth';
 import AccountIcon from './HeaderMenu';
 
 export default function Header() {
-    const { isAuthenticated } = useAuth();
     const router = useRouter();
     const publicPathList = ['/login', '/signup', '/signup-confirm'];
     const titlePosition = publicPathList.includes(router.pathname) ? 'justify-center' : 'justify-left';

@@ -1,11 +1,7 @@
+import { MainContentsProps } from '../types/common';
 import Sidebar from './Sidebar';
 
-type Props = {
-    title: string;
-    children?: React.ReactNode;
-};
-
-const MainContents: React.FC<Props> = (props) => {
+const MainContents: React.FC<MainContentsProps> = (props) => {
     const { children, title } = props;
 
     return (

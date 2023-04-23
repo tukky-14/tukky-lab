@@ -1,10 +1,7 @@
 import { Modal } from '@mui/material';
+import { LoadingProps } from '../types/common';
 
-type Props = {
-    open: boolean;
-};
-
-const Loading = (props: Props) => {
+const Loading = (props: LoadingProps) => {
     const { open } = props;
     return (
         <Modal open={open} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">

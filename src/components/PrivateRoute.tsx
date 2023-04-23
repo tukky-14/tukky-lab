@@ -1,14 +1,9 @@
-import { useRouter } from 'next/router';
 import { useAuth } from '../hooks/useAuth';
+import { ReactChildren } from '../types/common';
 import Loading from './Loading';
 
-type ReactChildren = {
-    children?: React.ReactNode;
-};
-
 const PrivateRoute: React.FC<ReactChildren> = ({ children }) => {
-    const { isLoading, isAuthenticated } = useAuth();
-    const router = useRouter();
+    const { isLoading } = useAuth();
 
     if (isLoading) {
         return <Loading open={true} />;
