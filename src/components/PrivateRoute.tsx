@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import Loading from './Loading';
 
@@ -14,14 +13,6 @@ const PrivateRoute: React.FC<ReactChildren> = ({ children }) => {
     if (isLoading) {
         return <Loading open={true} />;
     }
-
-    // if (!isAuthenticated && router.pathname !== '/') {
-    //     router.push('/');
-    // }
-
-    // if (isAuthenticated && router.pathname === '/') {
-    //     router.push('/home');
-    // }
 
     return <>{children}</>;
 };

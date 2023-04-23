@@ -1,5 +1,4 @@
 import { GridColDef } from '@mui/x-data-grid';
-import React from 'react';
 
 export const ZennColumns: GridColDef[] = [
     {

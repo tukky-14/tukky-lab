@@ -3,13 +3,13 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useRouter } from 'next/router';
-import * as React from 'react';
+import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import Loading from './Loading';
 
 export default function AccountIcon() {
     const { isLoading, username, signOut, isAuthenticated } = useAuth();
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const router = useRouter();
 
@@ -58,7 +58,6 @@ export default function AccountIcon() {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                {/* <MenuItem onClick={handleClose}>マイアカウント</MenuItem> */}
                 {isAuthenticated ? (
                     <MenuItem onClick={handleSignOutClick}>ログアウト</MenuItem>
                 ) : (

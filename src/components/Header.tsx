@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import * as React from 'react';
 import { useAuth } from '../hooks/useAuth';
 import AccountIcon from './HeaderMenu';
 
