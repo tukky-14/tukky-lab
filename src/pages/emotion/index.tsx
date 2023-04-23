@@ -1,11 +1,12 @@
 import { Box, Button } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import API from '../../awsConfig/api';
 import Emotions from '../../components/Emotions';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
+import { EmotionProps } from '../../types/emotion';
 
 export default function Emotion() {
     const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +58,7 @@ export default function Emotion() {
             }
 
             const results = body.FaceDetails[0].Emotions;
-            const newEmotions = emotions.map((emotion: { type: string; confidence: string }, index: number) => {
+            const newEmotions = emotions.map((emotion: EmotionProps, index: number) => {
                 switch (results[index].Type) {
                     case 'CALM':
                         return { type: '穏やか', confidence: `${results[index].Confidence.toFixed(2)}%` };
@@ -96,7 +97,7 @@ export default function Emotion() {
                 <div className="sm:flex mt-2 mr-2 -ml-2 sm:ml-0">
                     <div className="mb-2">
                         {!imageData && <Box sx={{ width: 300, height: 300, border: 'thin solid black' }}></Box>}
-                        {imageData && <img className="m-auto" src={imageData} />}
+                        {imageData && <img className="w-[300px] h-[300px] m-auto" src={imageData} />}
                         <input
                             id="fileUpload"
                             className="block w-full my-2"
