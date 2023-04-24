@@ -1,6 +1,6 @@
 import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { DataGrid, GridColDef, GridRowsProp, jaJP } from '@mui/x-data-grid';
-import React, { useReducer, useState } from 'react';
+import { useReducer, useState } from 'react';
 import API from '../../awsConfig/api';
 import { QiitaColumns } from '../../components/ColumnsQiita';
 import { ZennColumns } from '../../components/ColumnsZenn';
@@ -9,6 +9,7 @@ import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
+import { Site } from '../../types/articles';
 
 const sites = [
     { value: 'qiita', title: 'Qiita週間トレンド記事' },
@@ -75,7 +76,7 @@ export default function Articles() {
                         defaultValue="qiita"
                         onChange={handleSelectSiteChange}
                     >
-                        {sites.map((site: { value: string; title: string }, index: number) => (
+                        {sites.map((site: Site, index: number) => (
                             <MenuItem value={site.value} key={index}>
                                 {site.title}
                             </MenuItem>
