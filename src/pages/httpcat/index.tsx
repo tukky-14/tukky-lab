@@ -1,10 +1,9 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from '../../components/Header';
-import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
 import { API_ENDPOINT } from '../../constants/api';
+import { HttpCode } from '../../types/httpcat';
 
 export default function HttpCat() {
     const [httpCodes, setHttpCodes] = useState([
@@ -79,12 +78,12 @@ export default function HttpCat() {
     ]);
 
     const handleButtonClick = async (event: any) => {
-        const httpCode = event.target.innerHTML;
-        const newHttpCodes = httpCodes.map((obj: { code: string; display: boolean }) => {
-            if (obj.code === httpCode) {
-                return { code: obj.code, display: true };
+        const code = event.target.innerHTML;
+        const newHttpCodes = httpCodes.map((setHttpCodes: HttpCode) => {
+            if (setHttpCodes.code === code) {
+                return { code: setHttpCodes.code, display: true };
             }
-            return { code: obj.code, display: false };
+            return { code: setHttpCodes.code, display: false };
         });
         setHttpCodes(newHttpCodes);
     };
@@ -94,19 +93,19 @@ export default function HttpCat() {
             <Header />
             <MainContents title="HTTP猫">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mr-6 mt-2 mb-10">
-                    {httpCodes.map((obj: { code: string; display: boolean }, index: number) => (
+                    {httpCodes.map((httpCode: HttpCode, index: number) => (
                         <div key={index} className="w-full">
                             <button
-                                hidden={obj.display}
+                                hidden={httpCode.display}
                                 className="w-full border text-center text-2xl h-80 bg-gray-100 hover:bg-gray-300"
                                 onClick={handleButtonClick}
                             >
-                                {obj.code}
+                                {httpCode.code}
                             </button>
-                            {obj.display && (
+                            {httpCode.display && (
                                 <img
                                     className="h-80 block m-auto"
-                                    src={`${API_ENDPOINT.HTTP_CAT}${obj.code}.jpg`}
+                                    src={`${API_ENDPOINT.HTTP_CAT}${httpCode.code}.jpg`}
                                     alt="HTTPステータスを例えた猫の画像"
                                 />
                             )}
