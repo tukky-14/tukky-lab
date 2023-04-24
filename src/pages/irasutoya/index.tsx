@@ -5,11 +5,12 @@ import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
+import { IrasutoyaImage } from '../../types/irasutoya';
 
 export default function Irasutoya() {
     const [isLoading, setIsLoading] = useState(false);
     const [keyword, setKeyword] = useState('');
-    const [images, setImages] = useState<{ thumnail: string; alt: string; link: string }[]>([]);
+    const [images, setImages] = useState<IrasutoyaImage[]>([]);
 
     const handleSearchClick = async () => {
         try {
@@ -31,7 +32,7 @@ export default function Irasutoya() {
                 setIsLoading(false);
                 return;
             }
-            const imageData = body.map((data: { thumnail: string; alt: string; link: string }) => {
+            const imageData = body.map((data: IrasutoyaImage) => {
                 return {
                     thumnail: data.thumnail.replace(/\"/g, ''),
                     alt: data.alt.replace(/\"/g, '').replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec)),
@@ -66,7 +67,7 @@ export default function Irasutoya() {
                 </div>
                 {!!images.length && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mr-6 mt-2 mb-10">
-                        {images.map((image: { thumnail: string; alt: string; link: string }, index: number) => (
+                        {images.map((image: IrasutoyaImage, index: number) => (
                             <a href={image.link} key={index} target="_blank" rel="noreferrer">
                                 <Card className="p-2 h-60 text-center" variant="outlined">
                                     <img className="w-40 m-auto" src={image.thumnail} alt={image.alt} />
