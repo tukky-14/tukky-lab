@@ -35,9 +35,9 @@ export default function DisneyCharacter() {
                 const randamNumber = Math.floor(Math.random() * DISNEY_CHARACTER_COUNT);
                 const { data } = await axios.get(`${API_ENDPOINT.DISNEY}${randamNumber}`);
                 newCharactersData.push({
-                    id: data._id,
-                    name: data.name,
-                    imageUrl: data.imageUrl,
+                    id: data.data._id,
+                    name: data.data.name,
+                    imageUrl: data.data.imageUrl,
                 });
             }
 
