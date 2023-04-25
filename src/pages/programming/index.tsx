@@ -3,12 +3,9 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import Header from '../../components/Header';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
+import { Language, LanguageProps } from '../../types/programming';
 
-type Props = {
-    langArray: [{ name: string; imageUrl: string; description: string }];
-};
-
-export default function Programming(props: Props) {
+export default function Programming(props: LanguageProps) {
     const { langArray } = props;
 
     return (
@@ -16,7 +13,7 @@ export default function Programming(props: Props) {
             <Header />
             <MainContents title="プログラミング言語">
                 <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-4 mr-6 mt-2 mb-10">
-                    {langArray.map((lang: { name: string; imageUrl: string; description: string }, index: number) => (
+                    {langArray.map((lang: Language, index: number) => (
                         <div className="hover transform hover:scale-105 duration-150" key={index}>
                             <Tooltip title={lang.description}>
                                 <Card className="w-full" variant="outlined">
