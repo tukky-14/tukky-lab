@@ -4,6 +4,7 @@ import * as cheerio from 'cheerio';
 import Header from '../../components/Header';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
+import { siteInfo, siteInfoProps } from '../../types/useful';
 
 const sites = [
     { url: 'https://picsum.photos/', comment: '実装中にダミーの画像を設定したいときに重宝します。' },
@@ -16,11 +17,7 @@ const sites = [
     { url: 'https://command-lab.com/practice/', comment: 'ショートカットの練習に最適です。' },
 ];
 
-type Props = {
-    siteInfoArray: [{ title: string; description: string; image: string; url: string; comment: string }];
-};
-
-export default function Useful(props: Props) {
+export default function Useful(props: siteInfoProps) {
     const { siteInfoArray } = props;
 
     return (
@@ -28,33 +25,26 @@ export default function Useful(props: Props) {
             <Header />
             <MainContents title="便利サイト">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mr-6 mt-2 mb-10">
-                    {siteInfoArray.map(
-                        (
-                            og: { title: string; description: string; image: string; url: string; comment: string },
-                            index: number
-                        ) => (
-                            <a
-                                href={og.url}
-                                target="_blank"
-                                rel="noreferrer"
-                                key={index}
-                                className="hover transform hover:scale-105 duration-300"
-                            >
-                                <Card>
-                                    <div className="sm:flex p-2">
-                                        <img className="m-auto sm:m-0 h-40 w-full sm:w-40 block" src={og.image} alt={og.title} />
-                                        <div className="ml-2">
-                                            <p className="font-bold">{og.title}</p>
-                                            <p className="h-10 text-sm overflow-hidden text-overflow-ellipsis">{og.description}</p>
-                                            <p className="italic mt-4 text-sm overflow-hidden text-overflow-ellipsis">
-                                                {og.comment}
-                                            </p>
-                                        </div>
+                    {siteInfoArray.map((og: siteInfo, index: number) => (
+                        <a
+                            href={og.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={index}
+                            className="hover transform hover:scale-105 duration-300"
+                        >
+                            <Card>
+                                <div className="sm:flex p-2">
+                                    <img className="m-auto sm:m-0 h-40 w-full sm:w-40 block" src={og.image} alt={og.title} />
+                                    <div className="ml-2">
+                                        <p className="font-bold">{og.title}</p>
+                                        <p className="h-10 text-sm overflow-hidden text-overflow-ellipsis">{og.description}</p>
+                                        <p className="italic mt-4 text-sm overflow-hidden text-overflow-ellipsis">{og.comment}</p>
                                     </div>
-                                </Card>
-                            </a>
-                        )
-                    )}
+                                </div>
+                            </Card>
+                        </a>
+                    ))}
                 </div>
             </MainContents>
         </PrivateRoute>
