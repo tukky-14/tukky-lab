@@ -16,72 +16,72 @@ import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 export const SidebarData = [
     {
         title: 'ホーム',
-        icon: <HomeIcon />,
+        icon: <HomeIcon fontSize="small" />,
         link: '/',
     },
     {
         title: 'ランダム名言',
-        icon: <SpeakerNotesIcon />,
+        icon: <SpeakerNotesIcon fontSize="small" />,
         link: '/quotes',
     },
     {
         title: 'MCU次回作',
-        icon: <MovieFilterIcon />,
+        icon: <MovieFilterIcon fontSize="small" />,
         link: '/mcu',
     },
     {
         title: 'アニメ情報',
-        icon: <LocalMoviesIcon />,
+        icon: <LocalMoviesIcon fontSize="small" />,
         link: '/anime',
     },
     {
         title: '記事検索',
-        icon: <NewspaperIcon />,
+        icon: <NewspaperIcon fontSize="small" />,
         link: '/articles',
     },
     {
         title: '感情分析',
-        icon: <SentimentSatisfiedAltIcon />,
+        icon: <SentimentSatisfiedAltIcon fontSize="small" />,
         link: '/emotion',
     },
     {
         title: 'OCR',
-        icon: <DocumentScannerIcon />,
+        icon: <DocumentScannerIcon fontSize="small" />,
         link: '/ocr',
     },
     {
         title: 'HTTP猫',
-        icon: <PetsIcon />,
+        icon: <PetsIcon fontSize="small" />,
         link: '/httpcat',
     },
     {
         title: 'ディズニーキャラ',
-        icon: <CastleIcon />,
+        icon: <CastleIcon fontSize="small" />,
         link: '/disney',
     },
     {
         title: 'ポケモン',
-        icon: <FlipCameraAndroidIcon />,
+        icon: <FlipCameraAndroidIcon fontSize="small" />,
         link: '/pokemon',
     },
     {
         title: '便利サイト',
-        icon: <ConstructionIcon />,
+        icon: <ConstructionIcon fontSize="small" />,
         link: '/useful',
     },
     {
         title: 'プログラミング言語',
-        icon: <LaptopChromebookIcon />,
+        icon: <LaptopChromebookIcon fontSize="small" />,
         link: '/programming',
     },
     {
         title: 'いらすとや検索',
-        icon: <FaceRetouchingNaturalIcon />,
+        icon: <FaceRetouchingNaturalIcon fontSize="small" />,
         link: '/irasutoya',
     },
     {
         title: 'connpass検索',
-        icon: <ExploreIcon />,
+        icon: <ExploreIcon fontSize="small" />,
         link: '/connpass',
     },
 ];

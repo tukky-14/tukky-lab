@@ -38,21 +38,21 @@ const Sidebar = () => {
                     </p>
                 )}
             </aside>
-            <button className="sm:hidden absolute bottom-0 left-0 p-2 z-10 bg-blue-500" onClick={handleMobileMenuClick}>
-                <MenuIcon fontSize="large" />
+            <button
+                className="sm:hidden absolute bottom-2 left-2 p-2 rounded-full z-10 bg-blue-500"
+                onClick={handleMobileMenuClick}
+            >
+                <MenuIcon fontSize="large" sx={{ color: 'white' }} />
             </button>
             <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
-                <div className="px-4 pt-2 flex flex-col gap-1 h-full bg-gray-600 text-white">
+                <div className="flex flex-col h-full bg-gray-600 text-white overflow-scroll">
                     {SidebarData.map((data: SidebarProps, index: number) => (
-                        <Link href={data.link} className="py-2 pl-4 flex items-center hover:bg-white" key={index}>
+                        <Link href={data.link} className="py-2 pl-2 flex items-center border-b border-gray-500" key={index}>
                             {data.icon}
-                            {sideberOpen && <span className="inline pl-3 text-sm lg:text-base">{data.title}</span>}
+                            {sideberOpen && <span className="inline px-4 text-xs lg:text-base">{data.title}</span>}
                         </Link>
                     ))}
                 </div>
-                <button className="sm:hidden absolute bottom-0 left-0 p-2 z-10 text-white" onClick={() => setOpen(false)}>
-                    <CloseIcon fontSize="large" />
-                </button>
             </Drawer>
         </>
     );
