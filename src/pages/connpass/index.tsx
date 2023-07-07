@@ -65,9 +65,9 @@ export default function Connpass() {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4 mr-6 mt-2 mb-10">
                     {events.map((event: any, index: number) => (
-                        <div key={index} className="relative h-60 border rounded-lg p-4 hover:bg-blue-200 duration-300">
+                        <div key={index} className="relative h-[220px] border rounded-lg p-4 hover:bg-blue-200 duration-300">
                             <h3 className="font-bold">{event.title}</h3>
-                            <p className="h-12 mt-2 overflow-hidden text-overflow-ellipsis">{event.catch}</p>
+                            <p className="h-12 mt-2 overflow-hidden text-overflow-ellipsis text-sm">{event.catch}</p>
                             <div className="absolute bottom-2 text-sm">
                                 <p>
                                     時間：{event.started_at.split('T')[1].substr(0, 5)} ~{' '}
