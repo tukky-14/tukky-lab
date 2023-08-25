@@ -13,9 +13,9 @@ export default function App({ Component, pageProps }: AppProps) {
             <Head>
                 <title>Tukky Lab</title>
                 <link rel="icon" href="/favicon.ico" />
-                <meta name="description" content="エンジニアつっきーの実験的Webアプリケーション" />
+                <meta name="description" content="エンジニアつっきーの実験のためのWebアプリケーション" />
                 <meta property="og:title" content="Tukky Lab" />
-                <meta property="og:description" content="エンジニアつっきーの実験的Webアプリケーション" />
+                <meta property="og:description" content="エンジニアつっきーの実験のためのWebアプリケーション" />
                 <meta property="og:type" content="website" />
                 <meta property="og:image" content="/tukkylab.png" />
                 <meta property="og:url" content="https://tukky-lab.vercel.app/" />
