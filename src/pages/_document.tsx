@@ -4,7 +4,6 @@ export default function Document() {
     return (
         <Html lang="ja">
             <Head>
-                <title>Tukky Lab</title>
                 <link rel="icon" href="/favicon.ico" />
                 <meta name="description" content="エンジニアつっきーの実験のためのWebアプリケーション" />
                 <meta property="og:title" content="Tukky Lab" />
