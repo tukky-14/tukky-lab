@@ -40,10 +40,7 @@ const Sidebar = () => {
                     </Link>
                 ))}
             </aside>
-            <button
-                className="sm:hidden absolute bottom-6 right-6 p-2 rounded-full z-10 bg-blue-500"
-                onClick={handleMobileMenuClick}
-            >
+            <button className="sm:hidden fixed bottom-6 right-6 p-2 rounded-full z-10 bg-blue-500" onClick={handleMobileMenuClick}>
                 <MenuIcon fontSize="large" sx={{ color: 'white' }} />
             </button>
             <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
