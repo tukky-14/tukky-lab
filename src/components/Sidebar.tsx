@@ -10,7 +10,6 @@ import { SidebarData } from './SidebarData';
 
 const Sidebar = () => {
     const { pathname } = useRouter();
-
     const [sideberOpen, setSidebarOpen] = useRecoilState(sidebarOpenState);
     const [open, setOpen] = useState(false);
 
@@ -21,8 +20,6 @@ const Sidebar = () => {
     const handleMobileMenuClick = () => {
         setOpen(true);
     };
-
-    console.log('pathname:', pathname);
 
     return (
         <>
@@ -44,12 +41,12 @@ const Sidebar = () => {
                 ))}
             </aside>
             <button
-                className="sm:hidden absolute bottom-2 left-2 p-2 rounded-full z-10 bg-blue-500"
+                className="sm:hidden absolute bottom-6 right-6 p-2 rounded-full z-10 bg-blue-500"
                 onClick={handleMobileMenuClick}
             >
                 <MenuIcon fontSize="large" sx={{ color: 'white' }} />
             </button>
-            <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
+            <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
                 <div className="flex flex-col h-full bg-gray-600 text-white overflow-scroll">
                     {SidebarData.map((data: SidebarProps, index: number) => (
                         <Link href={data.link} className="py-2 pl-2 flex items-center border-b border-gray-500" key={index}>
