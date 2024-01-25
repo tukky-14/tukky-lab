@@ -1,4 +1,4 @@
-export type EmotionsProps = {
+export type EmotionProps = {
     emotions: { type: string; confidence: string }[];
 };
 
