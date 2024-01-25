@@ -19,6 +19,8 @@ export default function App({ Component, pageProps }: AppProps) {
                 <meta property="og:type" content="website" />
                 <meta property="og:image" content="/tukkylab.png" />
                 <meta property="og:url" content="https://tukky-lab.vercel.app/" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="mobile-web-app-capable" content="yes" />
             </Head>
 
             <RecoilRoot>
