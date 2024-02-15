@@ -1,3 +1,4 @@
+/* eslint @typescript-eslint/no-explicit-any: off */
 import { EmotionProps } from '../types/emotion';
 
 const Emotions = (props: EmotionProps) => {

@@ -1,4 +1,6 @@
+/* eslint @typescript-eslint/no-explicit-any: off */
 import { useState } from 'react';
+
 import Header from '../../components/Header';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
@@ -94,19 +96,19 @@ export default function HttpCat() {
             <MainContents title="HTTP猫">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mr-6 mt-2 mb-10">
                     {httpCodes.map((httpCode: HttpCode, index: number) => (
-                        <div key={index} className="w-full">
+                        <div className="w-full" key={index}>
                             <button
-                                hidden={httpCode.display}
                                 className="w-full border text-center text-2xl h-80 bg-gray-100 hover:bg-gray-300"
+                                hidden={httpCode.display}
                                 onClick={handleButtonClick}
                             >
                                 {httpCode.code}
                             </button>
                             {httpCode.display && (
                                 <img
+                                    alt="HTTPステータスを例えた猫の画像"
                                     className="h-80 block m-auto"
                                     src={`${API_ENDPOINT.HTTP_CAT}${httpCode.code}.jpg`}
-                                    alt="HTTPステータスを例えた猫の画像"
                                 />
                             )}
                         </div>

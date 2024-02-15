@@ -1,4 +1,5 @@
 import { MainContentsProps } from '../types/common';
+
 import Sidebar from './Sidebar';
 
 const MainContents: React.FC<MainContentsProps> = (props) => {

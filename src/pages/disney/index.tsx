@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import axios from 'axios';
 import React, { useLayoutEffect, useState } from 'react';
+
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
@@ -30,7 +31,7 @@ export default function DisneyCharacter() {
         try {
             setIsLoading(true);
 
-            let newCharactersData = [];
+            const newCharactersData = [];
             for (let i = 0; i < charactersData.length; i++) {
                 const randamNumber = Math.floor(Math.random() * DISNEY_CHARACTER_COUNT);
                 const { data } = await axios.get(`${API_ENDPOINT.DISNEY}${randamNumber}`);
@@ -59,7 +60,7 @@ export default function DisneyCharacter() {
                         <div key={data.id}>
                             {data.imageUrl && (
                                 <div>
-                                    <img className="h-80 m-auto" src={data.imageUrl} alt="ディズニーキャラクターの画像" />
+                                    <img alt="ディズニーキャラクターの画像" className="h-80 m-auto" src={data.imageUrl} />
                                     <p className="text-center text-xl">
                                         {data.id}. {data.name}
                                     </p>
@@ -69,7 +70,7 @@ export default function DisneyCharacter() {
                     ))}
                 </div>
                 <div className="text-center">
-                    <Button variant="outlined" onClick={handleGetClick}>
+                    <Button onClick={handleGetClick} variant="outlined">
                         別のキャラクターを取得
                     </Button>
                 </div>

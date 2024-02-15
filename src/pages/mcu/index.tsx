@@ -1,6 +1,8 @@
+/* eslint @typescript-eslint/no-explicit-any: off */
 import { Button } from '@mui/material';
 import axios from 'axios';
 import React, { useLayoutEffect, useState } from 'react';
+
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
@@ -43,14 +45,14 @@ export default function NextMCU() {
             <MainContents title="MCU次回作">
                 {!isLoading && (
                     <div className="w-full sm:w-2/3 lg:w-full mt-2 lg:flex pr-4">
-                        <img className="w-full sm:w-2/5 block" src={movieData.poster_url} alt="次回作MCU映画ポスター画像" />
+                        <img alt="次回作MCU映画ポスター画像" className="w-full sm:w-2/5 block" src={movieData.poster_url} />
                         <div className="flex">
                             <div className="w-full sm:w-2/3 sm:ml-4">
                                 <p className="font-bold">『{movieData.title}』</p>
                                 <p className="text-right">{movieData.release_date}</p>
                                 <p>{movieData.overview}</p>
                                 <div className="my-2 text-center">
-                                    <Button variant="outlined" onClick={handleTranslateClick}>
+                                    <Button onClick={handleTranslateClick} variant="outlined">
                                         翻訳
                                     </Button>
                                 </div>

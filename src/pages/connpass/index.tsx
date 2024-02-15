@@ -1,8 +1,10 @@
+/* eslint @typescript-eslint/no-explicit-any: off */
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { Button, TextField } from '@mui/material';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import dayjs from 'dayjs';
 import { useState } from 'react';
+
 import API from '../../awsConfig/api';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
@@ -53,19 +55,19 @@ export default function Connpass() {
             <MainContents title="connpass検索">
                 <div className="flex w-full gap-4 my-3">
                     <DesktopDatePicker
-                        label="日付"
                         inputFormat="YYYY/MM/DD"
-                        value={date}
+                        label="日付"
                         onChange={handleDateChange}
                         renderInput={(params) => <TextField {...params} />}
+                        value={date}
                     />
-                    <Button variant="contained" onClick={handleSearchClick}>
+                    <Button onClick={handleSearchClick} variant="contained">
                         検索
                     </Button>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4 mr-6 mt-2 mb-10">
                     {events.map((event: any, index: number) => (
-                        <div key={index} className="relative h-[220px] border rounded-lg p-4 hover:bg-blue-200 duration-300">
+                        <div className="relative h-[220px] border rounded-lg p-4 hover:bg-blue-200 duration-300" key={index}>
                             <h3 className="font-bold">{event.title}</h3>
                             <p className="h-12 mt-2 overflow-hidden text-overflow-ellipsis text-sm">{event.catch}</p>
                             <div className="absolute bottom-2 text-sm">
@@ -81,8 +83,8 @@ export default function Connpass() {
                             <a
                                 className="absolute bottom-2 right-2 text-blue-600 hover:scale-110 duration-300"
                                 href={event.event_url}
-                                target="_blank"
                                 rel="noreferrer"
+                                target="_blank"
                             >
                                 <OpenInNewIcon />
                             </a>

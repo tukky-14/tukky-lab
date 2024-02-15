@@ -1,6 +1,8 @@
+/* eslint @typescript-eslint/no-explicit-any: off */
 import { Button, Card, TextField, Tooltip } from '@mui/material';
 import axios from 'axios';
 import { useState } from 'react';
+
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';
@@ -55,13 +57,13 @@ export default function Pokemon() {
             <MainContents title="ポケモン">
                 <div className="flex w-full gap-4 my-3">
                     <TextField
-                        size="small"
                         id="outlined-basic"
                         label="図鑑番号"
-                        variant="outlined"
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNumber(Number(e.target.value))}
+                        size="small"
+                        variant="outlined"
                     />
-                    <Button size="small" variant="contained" onClick={handleButtonClick}>
+                    <Button onClick={handleButtonClick} size="small" variant="contained">
                         表示
                     </Button>
                 </div>
@@ -69,7 +71,7 @@ export default function Pokemon() {
                     <div className="w-full sm:w-1/3 my-4 text-right">
                         <Tooltip title={pokemonData.flavor_text}>
                             <Card className="p-2" variant="outlined">
-                                <img src={pokemonData.imageUrl} alt="ポケモンの画像" />
+                                <img alt="ポケモンの画像" src={pokemonData.imageUrl} />
                                 <p>
                                     No.{pokemonData.id} {pokemonData.name}
                                 </p>

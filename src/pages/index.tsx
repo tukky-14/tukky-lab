@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Expand from '../components/Expand';
 import Header from '../components/Header';
 import MainContents from '../components/MainContents';
@@ -16,8 +17,8 @@ export default function Home() {
                         <a
                             className="text-blue-600 hover:underline"
                             href="https://news.mynavi.jp/article/20220512-2339271/"
-                            target="_blank"
                             rel="noreferrer"
+                            target="_blank"
                         >
                             こちら
                         </a>
@@ -28,8 +29,8 @@ export default function Home() {
                         <a
                             className="text-blue-600 hover:underline"
                             href="https://github.com/DiljotSG/MCU-Countdown/blob/develop/docs/API.md"
-                            target="_blank"
                             rel="noreferrer"
+                            target="_blank"
                         >
                             MCU-Countdown
                         </a>
@@ -40,8 +41,8 @@ export default function Home() {
                         <a
                             className="text-blue-600 hover:underline"
                             href="https://github.com/Project-ShangriLa/sora-playframework-scala"
-                            target="_blank"
                             rel="noreferrer"
+                            target="_blank"
                         >
                             Shangrila Anime API
                         </a>
@@ -56,8 +57,8 @@ export default function Home() {
                         <a
                             className="text-blue-600 hover:underline"
                             href="https://thispersondoesnotexist.com/"
-                            target="_blank"
                             rel="noreferrer"
+                            target="_blank"
                         >
                             こちら
                         </a>
@@ -73,21 +74,21 @@ export default function Home() {
                     <Expand title="HTTP猫">
                         HTTPステータスコードのボタンを押すと、コードに応じた猫の画像を表示します。
                         HTTPステータスを猫の画像で取得できる
-                        <a className="text-blue-600 hover:underline" href="https://http.cat/" target="_blank" rel="noreferrer">
+                        <a className="text-blue-600 hover:underline" href="https://http.cat/" rel="noreferrer" target="_blank">
                             こちら
                         </a>
                         を使用させていただきました。かわいい。
                     </Expand>
                     <Expand title="ディズニーキャラ">
                         7000を超えるディズニーのキャラクターをランダムで取得します。
-                        <a className="text-blue-600 hover:underline" href="https://disneyapi.dev/" target="_blank" rel="noreferrer">
+                        <a className="text-blue-600 hover:underline" href="https://disneyapi.dev/" rel="noreferrer" target="_blank">
                             Disney API
                         </a>
                         を使用させていただきました。ほとんど知らないキャラクターが出てきます。ミッキーが出せたら超ラッキーです！
                     </Expand>
                     <Expand title="ポケモン">
                         みんな大好きポケモンのAPI、
-                        <a className="text-blue-600 hover:underline" href="https://pokeapi.co/" target="_blank" rel="noreferrer">
+                        <a className="text-blue-600 hover:underline" href="https://pokeapi.co/" rel="noreferrer" target="_blank">
                             pokeapi
                         </a>
                         を使用してみました。1008までの図鑑番号を入力して「表示」を押下すると、ポケモンの情報を表示します。
@@ -95,7 +96,7 @@ export default function Home() {
                     <Expand title="便利サイト">便利サイトをまとめました。</Expand>
                     <Expand title="プログラミング言語">
                         Googleスプレッドシートから取得したプログラミング言語を一覧で表示します。アイコンは
-                        <a className="text-blue-600 hover:underline" href="https://devicon.dev/" target="_blank" rel="noreferrer">
+                        <a className="text-blue-600 hover:underline" href="https://devicon.dev/" rel="noreferrer" target="_blank">
                             DEVICON
                         </a>
                         を使用しました。ホバーすると言語の説明文を表示します。
@@ -108,8 +109,8 @@ export default function Home() {
                         <a
                             className="text-blue-600 hover:underline"
                             href="https://connpass.com/about/api/"
-                            target="_blank"
                             rel="noreferrer"
+                            target="_blank"
                         >
                             connpass API
                         </a>

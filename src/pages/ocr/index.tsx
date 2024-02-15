@@ -1,6 +1,8 @@
-import { Box, Button } from '@mui/material';
+/* eslint @typescript-eslint/no-explicit-any: off */
+import { Button } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import Webcam from 'react-webcam';
+
 import API from '../../awsConfig/api';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
@@ -58,14 +60,14 @@ export default function OCR() {
                 <div className="sm:flex gap-4 mt-2 mr-2 -ml-2 sm:ml-0">
                     <div className="mb-2">
                         <Webcam
-                            className="m-auto"
                             audio={false}
+                            className="m-auto"
                             ref={webcamRef}
                             screenshotFormat="image/jpeg"
                             videoConstraints={videoConstraints}
                         />
                         <div className="w-full mt-4 flex justify-center">
-                            <Button className="w-full sm:w-2/3" variant="contained" onClick={handleAnalysisClick}>
+                            <Button className="w-full sm:w-2/3" onClick={handleAnalysisClick} variant="contained">
                                 分析
                             </Button>
                         </div>

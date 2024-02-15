@@ -4,7 +4,9 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+
 import { useAuth } from '../hooks/useAuth';
+
 import Loading from './Loading';
 
 export default function AccountIcon() {
@@ -39,10 +41,10 @@ export default function AccountIcon() {
     return (
         <div>
             <Button
-                id="basic-button"
                 aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
+                aria-haspopup="true"
+                id="basic-button"
                 onClick={handleClick}
                 sx={{ color: 'white', width: '12rem', display: 'flex', justifyContent: 'flex-end' }}
             >
@@ -50,13 +52,13 @@ export default function AccountIcon() {
                 <p className="text-sm sm:text-base ml-1">{username || 'John Doe'}</p>
             </Button>
             <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
                 MenuListProps={{
                     'aria-labelledby': 'basic-button',
                 }}
+                anchorEl={anchorEl}
+                id="basic-menu"
+                onClose={handleClose}
+                open={open}
             >
                 {isAuthenticated ? (
                     <MenuItem onClick={handleSignOutClick}>ログアウト</MenuItem>

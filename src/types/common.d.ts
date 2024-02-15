@@ -1,3 +1,5 @@
+/* eslint @typescript-eslint/no-explicit-any: off */
+
 export type ReactChildren = {
     children?: React.ReactNode;
 };

@@ -4,8 +4,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
+
 import { sidebarOpenState } from '../globalStates/sidebarAtom';
 import { SidebarProps } from '../types/common';
+
 import { SidebarData } from './SidebarData';
 
 const Sidebar = () => {
@@ -29,10 +31,10 @@ const Sidebar = () => {
                 </button>
                 {SidebarData.map((data: SidebarProps, index: number) => (
                     <Link
-                        href={data.link}
                         className={`py-2 pl-4 flex items-center hover:bg-white duration-200 ${
                             pathname === data.link && 'bg-white'
                         }`}
+                        href={data.link}
                         key={index}
                     >
                         {data.icon}
@@ -43,10 +45,10 @@ const Sidebar = () => {
             <button className="sm:hidden fixed bottom-6 right-6 p-2 rounded-full z-10 bg-blue-500" onClick={handleMobileMenuClick}>
                 <MenuIcon fontSize="large" sx={{ color: 'white' }} />
             </button>
-            <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
+            <Drawer anchor="right" onClose={() => setOpen(false)} open={open}>
                 <div className="flex flex-col h-full bg-gray-600 text-white overflow-scroll">
                     {SidebarData.map((data: SidebarProps, index: number) => (
-                        <Link href={data.link} className="py-2 pl-2 flex items-center border-b border-gray-500" key={index}>
+                        <Link className="py-2 pl-2 flex items-center border-b border-gray-500" href={data.link} key={index}>
                             {data.icon}
                             {sideberOpen && <span className="inline px-4 text-xs lg:text-base">{data.title}</span>}
                         </Link>

@@ -1,8 +1,10 @@
+/* eslint @typescript-eslint/no-explicit-any: off */
 import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { DataGrid, GridRowsProp, jaJP } from '@mui/x-data-grid';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import { useLayoutEffect, useState } from 'react';
+
 import { AnimeColumns } from '../../components/ColumnsAnime';
 import CustomToolbar from '../../components/CustomToolbar';
 import Header from '../../components/Header';
@@ -66,18 +68,18 @@ export default function Anime() {
             <MainContents title="アニメ情報">
                 <div className="flex flex-col sm:flex-row w-4/5 sm:w-1/3 pt-2 sm:items-center">
                     <Select
+                        onChange={handleSelectSiteChange}
                         size="small"
                         sx={{ width: '100%', marginRight: '1rem', height: '2rem' }}
                         value={selectSeason}
-                        onChange={handleSelectSiteChange}
                     >
                         {seasons.map((season: Season, index: number) => (
-                            <MenuItem value={`${season.year}/${season.cours}`} key={index}>
+                            <MenuItem key={index} value={`${season.year}/${season.cours}`}>
                                 {season.year}年{season.season} 放送開始
                             </MenuItem>
                         ))}
                     </Select>
-                    <Button variant="contained" sx={{ margin: '1rem 0', height: '2rem' }} onClick={handleSearchClick}>
+                    <Button onClick={handleSearchClick} sx={{ margin: '1rem 0', height: '2rem' }} variant="contained">
                         検索
                     </Button>
                 </div>
@@ -90,10 +92,10 @@ export default function Anime() {
                     }}
                 >
                     <DataGrid
-                        rows={rows}
                         columns={AnimeColumns}
-                        rowsPerPageOptions={[10, 25, 50, 100]}
-                        localeText={jaJP.components.MuiDataGrid.defaultProps.localeText}
+                        components={{
+                            Toolbar: CustomToolbar,
+                        }}
                         initialState={{
                             columns: {
                                 columnVisibilityModel: {
@@ -101,9 +103,9 @@ export default function Anime() {
                                 },
                             },
                         }}
-                        components={{
-                            Toolbar: CustomToolbar,
-                        }}
+                        localeText={jaJP.components.MuiDataGrid.defaultProps.localeText}
+                        rows={rows}
+                        rowsPerPageOptions={[10, 25, 50, 100]}
                     />
                 </div>
             </MainContents>

@@ -1,11 +1,12 @@
+/* eslint @typescript-eslint/no-explicit-any: off */
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
 import Header from '../components/Header';
 import Loading from '../components/Loading';
-import PrivateRoute from '../components/PrivateRoute';
 import { useAuth } from '../hooks/useAuth';
 
 export default function SignupConfirm() {
@@ -50,21 +51,19 @@ export default function SignupConfirm() {
                             <TextField
                                 fullWidth
                                 label="確認コード"
-                                variant="outlined"
+                                onChange={(e) => setVerificationCode(e.target.value)}
                                 type="email"
                                 value={verificationCode}
-                                onChange={(e) => setVerificationCode(e.target.value)}
+                                variant="outlined"
                             />
                         </div>
-                        <Button type="submit" variant="outlined" fullWidth>
+                        <Button fullWidth type="submit" variant="outlined">
                             <span className="text-base p-2">送信</span>
                         </Button>
                     </form>
                 </div>
                 <Link href="/">
-                    <button className="block m-auto text-blue-600 hover:underline">
-                        ログインに戻る
-                    </button>
+                    <button className="block m-auto text-blue-600 hover:underline">ログインに戻る</button>
                 </Link>
             </main>
         </>

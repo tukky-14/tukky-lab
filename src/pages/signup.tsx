@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import { useAuth } from '../hooks/useAuth';
@@ -51,43 +52,43 @@ export default function Signup() {
                             <TextField
                                 fullWidth
                                 label="ユーザー名"
-                                variant="outlined"
+                                onChange={(e) => setUsername(e.target.value)}
                                 type="text"
                                 value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                variant="outlined"
                             />
                         </div>
                         <div className="mb-10">
                             <TextField
                                 fullWidth
                                 label="パスワード"
-                                variant="outlined"
+                                onChange={(e) => setPassword(e.target.value)}
                                 type="password"
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                variant="outlined"
                             />
                         </div>
                         <div className="mb-10">
                             <TextField
                                 fullWidth
                                 label="パスワード（再入力）"
-                                variant="outlined"
+                                onChange={(e) => setPasswordAgain(e.target.value)}
                                 type="password"
                                 value={passwordAgain}
-                                onChange={(e) => setPasswordAgain(e.target.value)}
+                                variant="outlined"
                             />
                         </div>
                         <div className="mb-10">
                             <TextField
                                 fullWidth
                                 label="メールアドレス"
-                                variant="outlined"
+                                onChange={(e) => setEmail(e.target.value)}
                                 type="email"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                variant="outlined"
                             />
                         </div>
-                        <Button type="submit" variant="outlined" fullWidth>
+                        <Button fullWidth type="submit" variant="outlined">
                             <span className="text-base p-2">サインイン</span>
                         </Button>
                     </form>

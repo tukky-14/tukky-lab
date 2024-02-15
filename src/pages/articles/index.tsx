@@ -1,6 +1,7 @@
 import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { DataGrid, GridColDef, GridRowsProp, jaJP } from '@mui/x-data-grid';
 import { useReducer, useState } from 'react';
+
 import API from '../../awsConfig/api';
 import { QiitaColumns } from '../../components/ColumnsQiita';
 import { ZennColumns } from '../../components/ColumnsZenn';
@@ -71,18 +72,18 @@ export default function Articles() {
             <MainContents title="記事検索">
                 <div className="flex flex-col sm:flex-row w-4/5 sm:w-1/3 pt-2 sm:items-center">
                     <Select
-                        size="small"
-                        sx={{ width: '100%', marginRight: '1rem', height: '2rem' }}
                         defaultValue="qiita"
                         onChange={handleSelectSiteChange}
+                        size="small"
+                        sx={{ width: '100%', marginRight: '1rem', height: '2rem' }}
                     >
                         {sites.map((site: Site, index: number) => (
-                            <MenuItem value={site.value} key={index}>
+                            <MenuItem key={index} value={site.value}>
                                 {site.title}
                             </MenuItem>
                         ))}
                     </Select>
-                    <Button variant="contained" sx={{ margin: '1rem 0', height: '2rem' }} onClick={handleSearchClick}>
+                    <Button onClick={handleSearchClick} sx={{ margin: '1rem 0', height: '2rem' }} variant="contained">
                         検索
                     </Button>
                 </div>
@@ -95,10 +96,10 @@ export default function Articles() {
                     }}
                 >
                     <DataGrid
-                        rows={rows}
                         columns={columns}
-                        rowsPerPageOptions={[10, 25, 50, 100]}
-                        localeText={jaJP.components.MuiDataGrid.defaultProps.localeText}
+                        components={{
+                            Toolbar: CustomToolbar,
+                        }}
                         initialState={{
                             columns: {
                                 columnVisibilityModel: {
@@ -107,9 +108,9 @@ export default function Articles() {
                                 },
                             },
                         }}
-                        components={{
-                            Toolbar: CustomToolbar,
-                        }}
+                        localeText={jaJP.components.MuiDataGrid.defaultProps.localeText}
+                        rows={rows}
+                        rowsPerPageOptions={[10, 25, 50, 100]}
                     />
                 </div>
             </MainContents>

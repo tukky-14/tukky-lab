@@ -1,5 +1,7 @@
+/* eslint @typescript-eslint/no-explicit-any: off */
 import { Button, Card } from '@mui/material';
 import React, { useState } from 'react';
+
 import API from '../../awsConfig/api';
 import Header from '../../components/Header';
 import MainContents from '../../components/MainContents';
@@ -27,7 +29,7 @@ export default function Quotes({ quotes }: any) {
                         </div>
                     </Card>
                     <div className="w-full mt-4 flex justify-center">
-                        <Button className="w-full sm:w-1/3" variant="contained" onClick={handleButtonClick}>
+                        <Button className="w-full sm:w-1/3" onClick={handleButtonClick} variant="contained">
                             表示
                         </Button>
                     </div>

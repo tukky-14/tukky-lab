@@ -1,5 +1,6 @@
 import { Button, Card, TextField } from '@mui/material';
 import { useState } from 'react';
+
 import API from '../../awsConfig/api';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
@@ -55,22 +56,22 @@ export default function Irasutoya() {
             <MainContents title="いらすとや検索">
                 <div className="flex w-full gap-4 my-3">
                     <TextField
-                        size="small"
                         id="outlined-basic"
                         label="検索キーワード"
-                        variant="outlined"
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)}
+                        size="small"
+                        variant="outlined"
                     />
-                    <Button size="small" variant="contained" onClick={handleSearchClick}>
+                    <Button onClick={handleSearchClick} size="small" variant="contained">
                         検索
                     </Button>
                 </div>
                 {!!images.length && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mr-6 mt-2 mb-10">
                         {images.map((image: IrasutoyaImage, index: number) => (
-                            <a href={image.link} key={index} target="_blank" rel="noreferrer">
+                            <a href={image.link} key={index} rel="noreferrer" target="_blank">
                                 <Card className="p-2 h-60 text-center" variant="outlined">
-                                    <img className="w-40 m-auto" src={image.thumnail} alt={image.alt} />
+                                    <img alt={image.alt} className="w-40 m-auto" src={image.thumnail} />
                                     <p>{image.alt}</p>
                                 </Card>
                             </a>

@@ -16,7 +16,7 @@ export const AnimeColumns: GridColDef[] = [
         minWidth: 600,
         flex: 1,
         renderCell: (params) => (
-            <a className="text-blue-600 hover:underline" href={params.row.public_url} target="_blank" rel="noreferrer">
+            <a className="text-blue-600 hover:underline" href={params.row.public_url} rel="noreferrer" target="_blank">
                 {params.row.title}
             </a>
         ),
@@ -46,8 +46,8 @@ export const AnimeColumns: GridColDef[] = [
             <a
                 className="text-blue-600 hover:underline"
                 href={`https://twitter.com/${params.row.twitter_account}`}
-                target="_blank"
                 rel="noreferrer"
+                target="_blank"
             >
                 {params.row.twitter_account}
             </a>

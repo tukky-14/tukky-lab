@@ -16,7 +16,7 @@ export const QiitaColumns: GridColDef[] = [
         minWidth: 600,
         flex: 1,
         renderCell: (params) => (
-            <a className="text-blue-600 hover:underline" href={params.row.link} target="_blank" rel="noreferrer">
+            <a className="text-blue-600 hover:underline" href={params.row.link} rel="noreferrer" target="_blank">
                 {params.row.title}
             </a>
         ),
@@ -28,7 +28,7 @@ export const QiitaColumns: GridColDef[] = [
         align: 'left',
         minWidth: 400,
         renderCell: (params) => (
-            <a className="text-blue-600 hover:underline" href={params.row.link} target="_blank" rel="noreferrer">
+            <a className="text-blue-600 hover:underline" href={params.row.link} rel="noreferrer" target="_blank">
                 {params.row.link}
             </a>
         ),

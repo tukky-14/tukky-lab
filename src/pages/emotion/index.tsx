@@ -1,5 +1,7 @@
+/* eslint @typescript-eslint/no-explicit-any: off */
 import { Box, Button } from '@mui/material';
 import { useState } from 'react';
+
 import API from '../../awsConfig/api';
 import Emotions from '../../components/Emotions';
 import Header from '../../components/Header';
@@ -99,15 +101,15 @@ export default function Emotion() {
                         {!imageData && <Box sx={{ width: 300, height: 300, border: 'thin solid black' }}></Box>}
                         {imageData && <img className="w-[300px] h-[300px] m-auto" src={imageData} />}
                         <input
-                            id="fileUpload"
-                            className="block w-full my-2"
-                            name="textCapture"
-                            type="file"
                             accept="image/*"
+                            className="block w-full my-2"
+                            id="fileUpload"
+                            name="textCapture"
                             onChange={handleFileSelectClick}
+                            type="file"
                         />
                         <div className="w-full mt-4 flex justify-center">
-                            <Button className="w-full sm:w-2/3" variant="contained" onClick={handleAnalysisClick}>
+                            <Button className="w-full sm:w-2/3" onClick={handleAnalysisClick} variant="contained">
                                 分析
                             </Button>
                         </div>

@@ -4,15 +4,15 @@ export default function Document() {
     return (
         <Html lang="ja">
             <Head>
-                <link rel="icon" href="/favicon.ico" />
-                <meta name="description" content="エンジニアつっきーの実験のためのWebアプリケーション" />
-                <meta property="og:title" content="Tukky Lab" />
-                <meta property="og:description" content="エンジニアつっきーの実験のためのWebアプリケーション" />
-                <meta property="og:type" content="website" />
-                <meta property="og:image" content="/tukkylab.png" />
-                <meta property="og:url" content="https://tukky-lab.vercel.app/" />
-                <meta name="apple-mobile-web-app-capable" content="yes" />
-                <meta name="mobile-web-app-capable" content="yes" />
+                <link href="/favicon.ico" rel="icon" />
+                <meta content="エンジニアつっきーの実験のためのWebアプリケーション" name="description" />
+                <meta content="Tukky Lab" property="og:title" />
+                <meta content="エンジニアつっきーの実験のためのWebアプリケーション" property="og:description" />
+                <meta content="website" property="og:type" />
+                <meta content="/tukkylab.png" property="og:image" />
+                <meta content="https://tukky-lab.vercel.app/" property="og:url" />
+                <meta content="yes" name="apple-mobile-web-app-capable" />
+                <meta content="yes" name="mobile-web-app-capable" />
             </Head>
             <body>
                 <Main />

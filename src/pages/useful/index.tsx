@@ -1,6 +1,7 @@
 import { Card } from '@mui/material';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+
 import Header from '../../components/Header';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';
@@ -27,15 +28,15 @@ export default function Useful(props: siteInfoProps) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mr-6 mt-2 mb-10">
                     {siteInfoArray.map((og: siteInfo, index: number) => (
                         <a
-                            href={og.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            key={index}
                             className="hover transform hover:scale-105 duration-300"
+                            href={og.url}
+                            key={index}
+                            rel="noreferrer"
+                            target="_blank"
                         >
                             <Card>
                                 <div className="sm:flex p-2">
-                                    <img className="m-auto sm:m-0 h-40 w-full sm:w-40 block" src={og.image} alt={og.title} />
+                                    <img alt={og.title} className="m-auto sm:m-0 h-40 w-full sm:w-40 block" src={og.image} />
                                     <div className="ml-2">
                                         <p className="font-bold">{og.title}</p>
                                         <p className="h-10 text-sm overflow-hidden text-overflow-ellipsis">{og.description}</p>
