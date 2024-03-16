@@ -1,10 +1,9 @@
 import { Amplify, Auth } from 'aws-amplify';
 import { useRouter } from 'next/router';
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import awsConfigAuth from '../aws-config/auth';
 
-import AwsConfigAuth from '../awsConfig/auth';
-
-Amplify.configure({ Auth: AwsConfigAuth });
+Amplify.configure({ Auth: awsConfigAuth });
 
 interface UseAuth {
     isLoading: boolean;

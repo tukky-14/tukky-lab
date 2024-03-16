@@ -1,8 +1,7 @@
 /* eslint @typescript-eslint/no-explicit-any: off */
 import { Button, Card } from '@mui/material';
 import React, { useState } from 'react';
-
-import API from '../../awsConfig/api';
+import API from '../../aws-config/api';
 import Header from '../../components/Header';
 import MainContents from '../../components/MainContents';
 import PrivateRoute from '../../components/PrivateRoute';

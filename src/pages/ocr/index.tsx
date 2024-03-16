@@ -2,8 +2,7 @@
 import { Button } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import Webcam from 'react-webcam';
-
-import API from '../../awsConfig/api';
+import API from '../../aws-config/api';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';

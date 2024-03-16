@@ -4,8 +4,7 @@ import { Button, TextField } from '@mui/material';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import dayjs from 'dayjs';
 import { useState } from 'react';
-
-import API from '../../awsConfig/api';
+import API from '../../aws-config/api';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import MainContents from '../../components/MainContents';

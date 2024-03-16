@@ -1,8 +1,7 @@
 /* eslint @typescript-eslint/no-explicit-any: off */
 import { Box, Button } from '@mui/material';
 import { useState } from 'react';
-
-import API from '../../awsConfig/api';
+import API from '../../aws-config/api';
 import Emotions from '../../components/Emotions';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
